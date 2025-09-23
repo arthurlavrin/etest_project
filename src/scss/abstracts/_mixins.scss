@@ -1,0 +1,9 @@
+// for icons movement
+@mixin hover-move($x: 0, $y: -3px, $time: 0.3s, $easing: ease) {
+  display: inline-block;                  
+  transition: transform $time $easing;   
+
+  &:hover {
+    transform: translate($x, $y);        
+  }
+}
