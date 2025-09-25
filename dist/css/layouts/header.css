@@ -12,6 +12,8 @@
 
 .wrapper {
   max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .header-top {
@@ -72,8 +74,6 @@
   flex: none;
 }
 .icons-btn {
-  width: 30px;
-  height: 33px;
   margin-right: 15px;
 }
 .icons-btn:last-child {
@@ -93,25 +93,25 @@
   display: flex;
 }
 
-nav {
+ul {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 452px;
 }
-nav a {
+ul li {
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 18px;
   margin-right: 29px;
 }
-nav a:last-child {
+ul li:last-child {
   margin-right: 0;
 }
-nav a.active {
+ul li.active {
   color: #b92770;
 }
-nav a:hover {
+ul li:hover {
   color: #b92770;
 }
 

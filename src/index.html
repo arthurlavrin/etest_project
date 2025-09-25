@@ -8,15 +8,10 @@
 		<link rel="stylesheet" href="../dist/css/main.css" />
 	</head>
 	<body>
+		<!-- header -->
 		<div id="header"></div>
 
 		<script>
-			// fetch('components/header.html')
-			//     .then(response => response.text())
-			//     .then(data => {
-			//         document.getElementById('header').innerHTML = data;
-			// });
-
 			fetch("/src/components/header.html")
 				.then((response) => response.text())
 				.then((html) => {
@@ -30,7 +25,6 @@
 					const currentPath = window.location.pathname;
 
 					header.querySelectorAll("nav a").forEach((link) => {
-
 						const linkPath = new URL(link.href).pathname;
 						if (linkPath === currentPath) {
 							link.classList.add("active");
@@ -39,8 +33,34 @@
 						}
 					});
 				})
-				.catch((err) => console.error("Ошибка загрузки хедера:", err));
+				.catch((err) => console.error("Error loading header:", err));
 		</script>
 		<!-- // header -->
+
+		<!-- footer -->
+		<div id="footer"></div>
+
+		<script>
+			fetch("/src/components/footer.html")
+				.then((res) => res.text())
+				.then((html) => {
+					const footer = document.getElementById("footer");
+					footer.innerHTML = html;
+
+					// active menu
+					const currentPath = window.location.pathname;
+					footer.querySelectorAll("nav a").forEach((link) => {
+						const linkPath = new URL(link.href).pathname;
+						if (linkPath === currentPath) {
+							link.classList.add("active");
+						} else {
+							link.classList.remove("active");
+						}
+					});
+				})
+				.catch((err) => console.error("Error loading footer:", err));
+		</script>
+
+		<!-- // footer -->
 	</body>
 </html>

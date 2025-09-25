@@ -7,6 +7,8 @@
 
 .wrapper {
     max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 // header-top
@@ -70,8 +72,6 @@
     flex: none;
 
     &-btn {
-        width: 30px;
-        height: 33px;
         margin-right: 15px;
 
         &:last-child {
@@ -81,7 +81,7 @@
 }
 
 .icons img {
-  @include hover-move(0, -3px); // смещаем вверх на 3px при наведении
+    @include hover-move(0, -3px); 
 }
 
 // header-bottom
@@ -91,13 +91,13 @@
     display: flex;
 }
 
-nav {
+ul {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 452px;
 
-    a {
+    li {
         font-family: var(--font-family);
         font-weight: 700;
         font-size: 18px;

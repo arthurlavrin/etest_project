@@ -1,0 +1,182 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.footer {
+	font-family: var(--second-family);
+	// padding: 40px 0;
+}
+
+.wrapper {
+	max-width: 1300px;
+	width: 100%;
+}
+
+// banner
+
+.banner {
+	max-height: 192px;
+	background-image: url(/src/assets/images/homepage/benefits/vector-lines.svg),
+		url(/src/assets/images/homepage/benefits/bg-benefits.png);
+	background-position: center center, center center;
+	background-repeat: no-repeat, no-repeat;
+	background-size: cover, cover;
+	margin-bottom: 120px;
+}
+
+h2 {
+	font-family: var(--font3);
+	font-weight: 700;
+	font-size: 19px;
+	color: #fff;
+	text-align: left;
+	padding-top: 37px;
+	margin-bottom: 32px;
+}
+
+.benefits {
+	display: flex;
+	justify-content: space-between;
+
+	&-item {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 40px;
+
+		img {
+			width: 60px;
+			height: 60px;
+			margin-right: 20px;
+		}
+
+		p {
+			font-family: var(--second-family);
+			font-weight: 500;
+			font-size: 15px;
+			color: #fff;
+		}
+	}
+}
+
+// blocks
+
+.blocks {
+	display: flex;
+	justify-content: space-between;
+	gap: 60px;
+	flex-wrap: wrap; 
+
+h3 {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 24px;
+} 
+
+p {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+// left block
+
+.left-block {
+    max-width: 640px;
+    width: 100%;
+    flex: 0 1 65%; // width ~65%
+    display: flex;
+    flex-direction: column;
+
+    .links {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0;
+        margin-bottom: 50px;
+
+        .links-list {
+            flex: 0 1 30%; // three columns
+            max-width: 140px;
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: flex-start;
+                justify-content: left;
+                flex-direction: column;
+
+                li + li {
+                    margin-top: 8px;
+                }
+
+                a {
+                    font-family: var(--second-family);
+                    font-weight: 400;
+                    font-size: 15px;
+
+                    &:hover {
+                        color: $color-main;
+                    }
+                }
+            }
+        }
+    }
+
+    .desc {
+        margin-top: 40px;
+    }
+}
+
+
+// right block
+
+	.right-block {
+		flex: 0 1 30%; // width ~30%
+
+		.contact {
+            max-width: 367px;
+            width: 100%;
+			margin-bottom: 75px;
+		}
+
+		.info {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 35px 40px;
+
+			.info-item {
+				flex-wrap: 0 1 calc(50% - 40px);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+				img {
+					width: 24px;
+					height: 24px;
+                    object-fit: contain;
+					flex-shrink: 0;
+				}
+
+				span {
+					font-size: 15px;
+					line-height: 1.4;
+				}
+			}
+		}
+	}
+}
+
+
+// Coperight
+
+.copyright {
+	text-align: center;
+	margin: 110px 0 50px;
+	font-family: var(--font3);
+	font-weight: 400;
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.35);
+}
