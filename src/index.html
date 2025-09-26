@@ -10,57 +10,28 @@
 	<body>
 		<!-- header -->
 		<div id="header"></div>
+        <!-- // header -->
+        
+        <main>
+			<section class="hero">
+                    <div class="hero-content wrapper">
+                        <h1>
+                            Smart Styles for <br>Every Destination
+                        </h1>
 
-		<script>
-			fetch("/src/components/header.html")
-				.then((response) => response.text())
-				.then((html) => {
-					const header = document.getElementById("header");
-					header.innerHTML = html;
+                        <p>
+                            Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim. <br>Nullam pulvinar felis at metus.
+                        </p>
 
-					header.querySelectorAll("[data-src]").forEach((img) => {
-						img.src = `/src/${img.dataset.src}`;
-					});
-
-					const currentPath = window.location.pathname;
-
-					header.querySelectorAll("nav a").forEach((link) => {
-						const linkPath = new URL(link.href).pathname;
-						if (linkPath === currentPath) {
-							link.classList.add("active");
-						} else {
-							link.classList.remove("active");
-						}
-					});
-				})
-				.catch((err) => console.error("Error loading header:", err));
-		</script>
-		<!-- // header -->
+                        <button class="btn">View All Items</button>
+                    </div>
+			</section>
+		</main>
 
 		<!-- footer -->
 		<div id="footer"></div>
-
-		<script>
-			fetch("/src/components/footer.html")
-				.then((res) => res.text())
-				.then((html) => {
-					const footer = document.getElementById("footer");
-					footer.innerHTML = html;
-
-					// active menu
-					const currentPath = window.location.pathname;
-					footer.querySelectorAll("nav a").forEach((link) => {
-						const linkPath = new URL(link.href).pathname;
-						if (linkPath === currentPath) {
-							link.classList.add("active");
-						} else {
-							link.classList.remove("active");
-						}
-					});
-				})
-				.catch((err) => console.error("Error loading footer:", err));
-		</script>
-
-		<!-- // footer -->
+        <!-- // footer -->
+        
+        <script src="./js/layout.js"></script>
 	</body>
 </html>

@@ -7,39 +7,15 @@
 		<link rel="stylesheet" href="/dist/css/main.css" />
 	</head>
 	<body>
+		<!-- header -->
 		<div id="header"></div>
-
-		<script>
-			// fetch('../components/header.html')
-			//     .then(response => response.text())
-			//     .then(data => {
-			//         document.getElementById('header').innerHTML = data;
-			// });
-
-			fetch("/src/components/header.html")
-				.then((response) => response.text())
-				.then((html) => {
-					const header = document.getElementById("header");
-					header.innerHTML = html;
-
-					header.querySelectorAll("[data-src]").forEach((img) => {
-						img.src = `/src/${img.dataset.src}`;
-					});
-
-					const currentPath = window.location.pathname;
-
-					header.querySelectorAll("nav a").forEach((link) => {
-
-						const linkPath = new URL(link.href).pathname;
-						if (linkPath === currentPath) {
-							link.classList.add("active");
-						} else {
-							link.classList.remove("active");
-						}
-					});
-				})
-				.catch((err) => console.error("Ошибка загрузки хедера:", err));
-		</script>
 		<!-- // header -->
+
+		
+
+		<!-- footer -->
+		<div id="footer"></div>
+		<!-- // footer -->
+        <script src="../js/layout.js"></script>
 	</body>
 </html>

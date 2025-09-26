@@ -6,10 +6,6 @@
 	// padding: 40px 0;
 }
 
-.wrapper {
-	max-width: 1300px;
-	width: 100%;
-}
 
 // banner
 
@@ -20,39 +16,38 @@
 	background-position: center center, center center;
 	background-repeat: no-repeat, no-repeat;
 	background-size: cover, cover;
-	margin-bottom: 120px;
+	margin-bottom: $gap-large * 2;
 }
 
 h2 {
 	font-family: var(--font3);
 	font-weight: 700;
 	font-size: 19px;
-	color: #fff;
+	color: $color-white;
 	text-align: left;
 	padding-top: 37px;
 	margin-bottom: 32px;
 }
 
 .benefits {
-	display: flex;
-	justify-content: space-between;
+	@include flex-between;
 
 	&-item {
-		display: flex;
-		justify-content: space-between;
-		margin-bottom: 40px;
+		@include flex-between;
+		margin-bottom: $gap-medium;
 
 		img {
 			width: 60px;
 			height: 60px;
-			margin-right: 20px;
+			margin-right: $gap-small;
 		}
 
 		p {
 			font-family: var(--second-family);
 			font-weight: 500;
 			font-size: 15px;
-			color: #fff;
+			color: $color-white;
+
 		}
 	}
 }
@@ -60,8 +55,7 @@ h2 {
 // blocks
 
 .blocks {
-	display: flex;
-	justify-content: space-between;
+	@include flex-between;
 	gap: 60px;
 	flex-wrap: wrap; 
 
@@ -87,9 +81,7 @@ p {
     flex-direction: column;
 
     .links {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
+        @include flex-between(flex-start);
         width: 100%;
         flex-wrap: wrap;
         gap: 0;
@@ -126,7 +118,7 @@ p {
     }
 
     .desc {
-        margin-top: 40px;
+        margin-top: $gap-medium;
     }
 }
 
@@ -178,5 +170,5 @@ p {
 	font-family: var(--font3);
 	font-weight: 400;
 	font-size: 14px;
-	color: rgba(0, 0, 0, 0.35);
+	color: $color-text-light;
 }

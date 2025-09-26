@@ -1,5 +1,50 @@
-@use './base/reset';
-@use './abstracts/variables' as *;
-@use './abstracts/mixins' as *;
-@use 'layouts/header.scss';
-@use 'layouts/footer.scss';
+@use "./base/reset";
+@use "./abstracts/variables" as *;
+@use "./abstracts/mixins" as *;
+@use "layouts/header.scss";
+@use "layouts/footer.scss";
+@use "components/buttons.scss";
+
+.wrapper {
+	@include container;
+}
+
+.hero {
+	background-color: #e7e8e9;
+	position: relative;
+	@include flex-center;
+
+	&::after {
+		content: "";
+		position: absolute;
+		right: -20%;
+		top: 47%;
+		transform: translateY(-50%);
+		width: 100%;
+		height: 500px;
+		background: url("/src/assets/images/homepage/bag-title.png") no-repeat center;
+		background-size: contain;
+		pointer-events: none;
+	}
+
+	&-content {
+		// max-width: 640px;
+		padding: 280px 0 284px 200px;
+
+		h1 {
+			font-family: var(--font-family);
+			font-weight: 900;
+			font-size: 50px;
+			color: $color-black;
+			margin-bottom: 30px;
+		}
+
+		p {
+			font-family: var(--font-family);
+			font-weight: 400;
+			font-size: 17px;
+			color: $color-text;
+			margin-bottom: 30px;
+		}
+	}
+}

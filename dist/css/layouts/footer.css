@@ -10,11 +10,6 @@
   font-family: var(--second-family);
 }
 
-.wrapper {
-  max-width: 1300px;
-  width: 100%;
-}
-
 .banner {
   max-height: 192px;
   background-image: url(/src/assets/images/homepage/benefits/vector-lines.svg), url(/src/assets/images/homepage/benefits/bg-benefits.png);
@@ -37,10 +32,12 @@ h2 {
 .benefits {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .benefits-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 40px;
 }
 .benefits-item img {
@@ -58,6 +55,7 @@ h2 {
 .blocks {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 60px;
   flex-wrap: wrap;
 }

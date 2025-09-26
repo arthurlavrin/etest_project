@@ -1,9 +1,54 @@
-// for icons movement
-@mixin hover-move($x: 0, $y: -3px, $time: 0.3s, $easing: ease) {
-  display: inline-block;                  
-  transition: transform $time $easing;   
+@use "../abstracts/variables" as *;
 
-  &:hover {
-    transform: translate($x, $y);        
-  }
+@mixin container($width: $max-width-container) {
+	max-width: $width;
+	width: 100%;
+	margin: 0 auto;
+}
+
+// BUTTONS
+
+// for movement
+@mixin hover-move($x: 0, $y: -3px, $time: 0.3s, $easing: ease) {
+	display: inline-block;
+	transition: transform $time $easing;
+
+	&:hover {
+		transform: translate($x, $y);
+	}
+}
+
+// for press
+@mixin pressable-button($bg: $color-main, $text-color: #fff) {
+	display: inline-block;
+	padding: 18px;
+	border: none;
+	background-color: $bg;
+	color: $text-color;
+	font-family: var(--font-family);
+	font-weight: 700;
+	font-size: 18px;
+	cursor: pointer;
+	transition: all 0.15s ease;
+
+	&:active {
+		// the button press inside
+		transform: translateY(4px);
+		opacity: 0.7;
+	}
+}
+
+// ---
+
+// FLEX-position
+@mixin flex-between($align: center) {
+	display: flex;
+	justify-content: space-between;
+	align-items: $align;
+}
+
+@mixin flex-center($justify: center, $align: center) {
+	display: flex;
+	justify-content: $justify;
+	align-items: $align;
 }

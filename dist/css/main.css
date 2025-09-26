@@ -96,12 +96,6 @@ legend {
   margin: 48px 187px 0 200px;
 }
 
-.wrapper {
-  max-width: 1300px;
-  width: 100%;
-  margin: 0 auto;
-}
-
 .header-top {
   display: flex;
   justify-content: center;
@@ -181,9 +175,12 @@ legend {
 
 ul {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   margin-left: 452px;
+}
+ul a.active {
+  color: #b92770;
 }
 ul li {
   font-family: var(--font-family);
@@ -193,9 +190,6 @@ ul li {
 }
 ul li:last-child {
   margin-right: 0;
-}
-ul li.active {
-  color: #b92770;
 }
 ul li:hover {
   color: #b92770;
@@ -215,11 +209,6 @@ ul li:hover {
 
 .footer {
   font-family: var(--second-family);
-}
-
-.wrapper {
-  max-width: 1300px;
-  width: 100%;
 }
 
 .banner {
@@ -244,10 +233,12 @@ h2 {
 .benefits {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .benefits-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 40px;
 }
 .benefits-item img {
@@ -265,6 +256,7 @@ h2 {
 .blocks {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 60px;
   flex-wrap: wrap;
 }
@@ -357,6 +349,75 @@ h2 {
   font-weight: 400;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.35);
+}
+
+.btn {
+  max-width: 174px;
+  max-height: 60px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.btn:hover {
+  transform: translate(0, -3px);
+}
+.btn {
+  display: inline-block;
+  padding: 18px;
+  border: none;
+  background-color: #b92770;
+  color: #fff;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.btn:active {
+  transform: translateY(4px);
+  opacity: 0.7;
+}
+
+.wrapper {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero {
+  background-color: #e7e8e9;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -20%;
+  top: 47%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 500px;
+  background: url("/src/assets/images/homepage/bag-title.png") no-repeat center;
+  background-size: contain;
+  pointer-events: none;
+}
+.hero-content {
+  padding: 280px 0 284px 200px;
+}
+.hero-content h1 {
+  font-family: var(--font-family);
+  font-weight: 900;
+  font-size: 50px;
+  color: #000;
+  margin-bottom: 30px;
+}
+.hero-content p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 17px;
+  color: #504e4a;
+  margin-bottom: 30px;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -10,12 +10,6 @@
   margin: 48px 187px 0 200px;
 }
 
-.wrapper {
-  max-width: 1300px;
-  width: 100%;
-  margin: 0 auto;
-}
-
 .header-top {
   display: flex;
   justify-content: center;
@@ -95,9 +89,12 @@
 
 ul {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   margin-left: 452px;
+}
+ul a.active {
+  color: #b92770;
 }
 ul li {
   font-family: var(--font-family);
@@ -107,9 +104,6 @@ ul li {
 }
 ul li:last-child {
   margin-right: 0;
-}
-ul li.active {
-  color: #b92770;
 }
 ul li:hover {
   color: #b92770;

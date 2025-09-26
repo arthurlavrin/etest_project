@@ -1,0 +1,11 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.btn {
+    max-width: 174px;
+    max-height: 60px;    
+
+    @include hover-move;
+
+    @include pressable-button;
+}
