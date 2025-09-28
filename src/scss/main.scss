@@ -9,9 +9,12 @@
 	@include container;
 }
 
+// hero section
+
 .hero {
 	background-color: #e7e8e9;
 	position: relative;
+    z-index: 1;
 	@include flex-center;
 
 	&::after {
@@ -40,11 +43,90 @@
 		}
 
 		p {
-			font-family: var(--font-family);
-			font-weight: 400;
-			font-size: 17px;
-			color: $color-text;
+			@include text;
 			margin-bottom: 30px;
 		}
 	}
+}
+
+
+// promo section
+
+.promo {
+    @include flex-between;
+    background-color: $color-white;
+    box-shadow: $box-shadow;
+    position: relative;
+    z-index: 2;
+    margin-top: -100px;
+
+    &-left {
+        max-width: 495px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 85px;
+
+        &-profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 28px;
+
+            img {
+                width: 85px;
+                height: 93px;
+                margin-right: 22px;
+            }
+        }
+
+        &-desc {
+            h2 {
+                @include heading;
+            }
+
+            p {
+                @include text;
+                margin-top: 30px;
+            }
+        }
+    }
+
+    &-right {
+            width: 646px;
+            height: 566px;
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(/src/assets/images/homepage/bags-discount.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+        &-items {
+            display: flex;
+            flex-direction: column;
+            padding: 189px 0 159px 70px;
+
+            h2 {
+                @include heading($color: $color-white);
+                margin-bottom: 30px;
+            }
+
+            p {
+                @include text($color: $color-white);
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
+
+.profile-desc {
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        @include heading($size: 20px, $weight: 700);
+        margin-bottom: 7px;
+    }
+
+    span {
+        @include text($color: $color-black);
+    }
 }

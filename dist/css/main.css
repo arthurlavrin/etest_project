@@ -386,6 +386,7 @@ h2 {
 .hero {
   background-color: #e7e8e9;
   position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -416,8 +417,98 @@ h2 {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 17px;
+  line-height: 1.6;
   color: #504e4a;
   margin-bottom: 30px;
+}
+
+.promo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 20px 80px 0 rgba(193, 199, 212, 0.7);
+  position: relative;
+  z-index: 2;
+  margin-top: -100px;
+}
+.promo-left {
+  max-width: 495px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 85px;
+}
+.promo-left-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.promo-left-profile img {
+  width: 85px;
+  height: 93px;
+  margin-right: 22px;
+}
+.promo-left-desc h2 {
+  font-family: var(--font-family);
+  font-weight: 900;
+  font-size: 40px;
+  color: #000;
+}
+.promo-left-desc p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #504e4a;
+  margin-top: 30px;
+}
+.promo-right {
+  width: 646px;
+  height: 566px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/src/assets/images/homepage/bags-discount.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.promo-right-items {
+  display: flex;
+  flex-direction: column;
+  padding: 189px 0 159px 70px;
+}
+.promo-right-items h2 {
+  font-family: var(--font-family);
+  font-weight: 900;
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 30px;
+}
+.promo-right-items p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.profile-desc {
+  display: flex;
+  flex-direction: column;
+}
+.profile-desc h3 {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 7px;
+}
+.profile-desc span {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #000;
 }
 
 /*# sourceMappingURL=main.css.map */

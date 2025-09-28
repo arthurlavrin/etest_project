@@ -6,7 +6,23 @@
 	margin: 0 auto;
 }
 
-// BUTTONS
+// --- FONTS ---
+@mixin heading($color: #000, $size: 40px, $weight: 900) {
+	font-family: var(--font-family);
+	font-weight: $weight;
+	font-size: $size;
+	color: $color;
+}
+
+@mixin text($color: #504e4a, $size: 17px, $weight: 400, $line: 1.6) {
+	font-family: var(--font-family);
+	font-weight: $weight;
+	font-size: $size;
+	line-height: $line;
+	color: $color;
+}
+
+// --- BUTTONS ---
 
 // for movement
 @mixin hover-move($x: 0, $y: -3px, $time: 0.3s, $easing: ease) {
@@ -38,9 +54,7 @@
 	}
 }
 
-// ---
-
-// FLEX-position
+// --- FLEX-position ---
 @mixin flex-between($align: center) {
 	display: flex;
 	justify-content: space-between;
