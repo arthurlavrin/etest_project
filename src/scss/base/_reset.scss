@@ -8,6 +8,11 @@
 	box-sizing: border-box;
 }
 
+html,
+body {
+	overflow-x: hidden;
+}
+
 a,
 a:visited,
 a:hover {
@@ -64,7 +69,7 @@ input::-ms-clear {
 }
 
 button,
-input[type='submit'] {
+input[type="submit"] {
 	display: inline-block;
 	box-shadow: none;
 	background-color: transparent;

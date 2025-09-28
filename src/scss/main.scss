@@ -14,7 +14,7 @@
 .hero {
 	background-color: #e7e8e9;
 	position: relative;
-    z-index: 1;
+	z-index: 1;
 	@include flex-center;
 
 	&::after {
@@ -25,7 +25,8 @@
 		transform: translateY(-50%);
 		width: 100%;
 		height: 500px;
-		background: url("/src/assets/images/homepage/bag-title.png") no-repeat center;
+		background: url("/src/assets/images/homepage/bag-title.png") no-repeat
+			center;
 		background-size: contain;
 		pointer-events: none;
 	}
@@ -49,84 +50,217 @@
 	}
 }
 
-
 // promo section
 
 .promo {
-    @include flex-between;
-    background-color: $color-white;
-    box-shadow: $box-shadow;
-    position: relative;
-    z-index: 2;
-    margin-top: -100px;
+	@include flex-between;
+	background-color: $color-white;
+	box-shadow: $box-shadow;
+	position: relative;
+	z-index: 2;
+	margin-top: -100px;
 
-    &-left {
-        max-width: 495px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding-left: 85px;
+	&-left {
+		max-width: 495px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding-left: 85px;
 
-        &-profile {
-            display: flex;
-            align-items: center;
-            margin-bottom: 28px;
+		&-profile {
+			display: flex;
+			align-items: center;
+			margin-bottom: 28px;
 
-            img {
-                width: 85px;
-                height: 93px;
-                margin-right: 22px;
-            }
-        }
+			img {
+				width: 85px;
+				height: 93px;
+				margin-right: 22px;
+			}
+		}
 
-        &-desc {
-            h2 {
-                @include heading;
-            }
+		&-desc {
+			h2 {
+				@include heading;
+			}
 
-            p {
-                @include text;
-                margin-top: 30px;
-            }
-        }
-    }
+			p {
+				@include text;
+				margin-top: 30px;
+			}
+		}
+	}
 
-    &-right {
-            width: 646px;
-            height: 566px;
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(/src/assets/images/homepage/bags-discount.png);
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
+	&-right {
+		width: 646px;
+		height: 566px;
+		background-image: linear-gradient(
+				rgba(0, 0, 0, 0.4),
+				rgba(0, 0, 0, 0.4)
+			),
+			url(/src/assets/images/homepage/bags-discount.png);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
 
-        &-items {
-            display: flex;
-            flex-direction: column;
-            padding: 189px 0 159px 70px;
+		&-items {
+			display: flex;
+			flex-direction: column;
+			padding: 189px 0 159px 70px;
 
-            h2 {
-                @include heading($color: $color-white);
-                margin-bottom: 30px;
-            }
+			h2 {
+				@include heading($color: $color-white);
+				margin-bottom: 30px;
+			}
 
-            p {
-                @include text($color: $color-white);
-                margin-bottom: 30px;
-            }
-        }
-    }
+			p {
+				@include text($color: $color-white);
+				margin-bottom: 30px;
+			}
+		}
+	}
 }
 
 .profile-desc {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-    h3 {
-        @include heading($size: 20px, $weight: 700);
-        margin-bottom: 7px;
-    }
+	h3 {
+		@include heading($size: 20px, $weight: 700);
+		margin-bottom: 7px;
+	}
 
-    span {
-        @include text($color: $color-black);
-    }
+	span {
+		@include text($color: $color-black);
+	}
 }
+
+// products-overview section
+
+.products-overview {
+	margin-top: 106px;
+
+	&-title {
+		text-align: center;
+		margin-bottom: 40px;
+
+		h2 {
+			@include heading;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		p {
+			@include text($color: $color-text);
+		}
+	}
+
+	&-wrapper {
+		@include container;
+		position: relative;
+		overflow: hidden;
+	}
+
+	&-track {
+		display: flex;
+        gap: 39px;
+		transition: transform 0.4s ease;
+	}
+
+    &-dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 25px;
+
+        button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background-color: $color-border;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &.active {
+                background-color: $color-main;
+            }
+        }
+    }
+	.product-card {
+        position: relative;
+        width: 296px;
+        height: 600px;
+		box-sizing: border-box;
+		// margin-right: 39px;
+        overflow: hidden;
+        flex-shrink: 0;
+        display: flex;        
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+		img {
+			width: 100%;
+            height: 100%;
+            object-fit: cover;
+			display: block;
+		}
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+            z-index: 1;
+        }
+
+		&-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            z-index: 2;
+
+			h3 {
+				@include heading(
+					$weight: 700,
+					$size: 19px,
+					$color: $color-white
+				);
+                margin-bottom: 20px;
+			}
+
+            p {
+                @include text($color: $color-white);
+                margin-bottom: 39px;
+            }
+		}
+	}
+
+	&-btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		background: $color-main;
+		color: $color-white;
+		border: none;
+		padding: 10px 15px;
+		cursor: pointer;
+		z-index: 10;
+
+		&.prev {
+			left: 10px;
+		}
+		&.next {
+			right: 10px;
+		}
+
+		&:hover {
+			background: darken($color-main, 10%);
+		}
+	}
+}
+
