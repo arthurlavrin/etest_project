@@ -66,3 +66,12 @@
 	justify-content: $justify;
 	align-items: $align;
 }
+
+
+// --- IMG background
+
+@mixin background ($position: center, $size: cover, $repeat: no-repeat) {
+	background-position: $position;
+	background-size: $size;
+	background-repeat: $repeat;
+}

@@ -9,7 +9,7 @@
 	@include container;
 }
 
-// hero section
+// --- hero section ---
 
 .hero {
 	background-color: #e7e8e9;
@@ -43,14 +43,14 @@
 			margin-bottom: 30px;
 		}
 
-		p {
+		&-text {
 			@include text;
 			margin-bottom: 30px;
 		}
 	}
 }
 
-// promo section
+// --- promo section ---
 
 .promo {
 	@include flex-between;
@@ -84,7 +84,7 @@
 				@include heading;
 			}
 
-			p {
+			&-text {
 				@include text;
 				margin-top: 30px;
 			}
@@ -99,21 +99,19 @@
 				rgba(0, 0, 0, 0.4)
 			),
 			url(/src/assets/images/homepage/bags-discount.png);
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
+		@include background;
 
 		&-items {
 			display: flex;
 			flex-direction: column;
-			padding: 189px 0 159px 70px;
+			padding: 189px 184px 159px 70px;
 
-			h2 {
+			&-title {
 				@include heading($color: $color-white);
 				margin-bottom: 30px;
 			}
 
-			p {
+			&-text {
 				@include text($color: $color-white);
 				margin-bottom: 30px;
 			}
@@ -135,7 +133,7 @@
 	}
 }
 
-// products-overview section
+// --- products-overview section ---
 
 .products-overview {
 	margin-top: 106px;
@@ -144,13 +142,13 @@
 		text-align: center;
 		margin-bottom: 40px;
 
-		h2 {
+		&-heading {
 			@include heading;
 			text-align: center;
 			margin-bottom: 10px;
 		}
 
-		p {
+		&-text {
 			@include text($color: $color-text);
 		}
 	}
@@ -163,7 +161,6 @@
 
 	&-track {
 		display: flex;
-        gap: 39px;
 		transition: transform 0.4s ease;
 	}
 
@@ -192,7 +189,7 @@
         width: 296px;
         height: 600px;
 		box-sizing: border-box;
-		// margin-right: 39px;
+		margin-right: 39px;
         overflow: hidden;
         flex-shrink: 0;
         display: flex;        
@@ -224,7 +221,7 @@
             padding: 20px;
             z-index: 2;
 
-			h3 {
+			&-title {
 				@include heading(
 					$weight: 700,
 					$size: 19px,
@@ -233,7 +230,7 @@
                 margin-bottom: 20px;
 			}
 
-            p {
+            &-text {
                 @include text($color: $color-white);
                 margin-bottom: 39px;
             }
@@ -264,3 +261,176 @@
 	}
 }
 
+
+
+// --- products-sections ---
+.products-sections {
+	margin: 80px 120px;
+
+	.products-block {
+		@include container;
+		// margin-bottom: 80px;
+
+		&-title {
+			text-align: center;
+			margin-bottom: 40px;
+
+			h2 {
+				@include heading;
+				text-align: center;
+				margin-bottom: 10px;
+			}
+
+			p {
+				@include text($color: $color-text);
+			}
+		}
+
+		.products-list {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 30px;
+		}
+
+		.product-card {
+			position: relative;
+			width: 296px;
+			// height: 600px;
+			overflow: hidden;
+			text-align: center;
+
+			img {
+				width: 100%;
+				object-fit: cover;
+				display: block;
+				box-shadow: $box-shadow;
+
+			}
+
+			.badge-sale {
+				position: absolute;
+				top: 15px;
+				left: 15px;
+				background: $color-main;
+				color: $color-white;
+				font-weight: 700;
+				font-size: 12px;
+				padding: 4px 8px;
+			}
+
+			h3 {
+				@include heading($size: 18px, $weight: 700);
+				padding: 24px 55px 15px 56px
+			}
+
+			.price {
+				@include text($color: $color-black);
+				font-weight: 700;
+				margin-bottom: 15px;
+			}
+
+			.btn {
+				@include pressable-button($bg: $color-main, $text-color: $color-white);
+				width: 150px;
+			}
+		}
+	}
+}
+
+
+// --- content-banner section ---
+
+.content-banner {
+	@include flex-between;
+	height: 407px;
+	background-image: linear-gradient(
+			rgba(0, 0, 0, 0.4),
+			rgba(0, 0, 0, 0.4)
+			), url(/src/assets/images/homepage/banner.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-bottom: 20px;
+
+	&-left {
+		margin: 29px 0 0 105px;
+
+		&-title {
+			@include heading($size: 223px, $color: $color-white);
+		}
+
+		&-text {
+			@include text($size: 20px, $color: $color-white);
+			margin-top: -20px;
+			margin-bottom: 96px;
+		}
+	}
+
+	&-right {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		&-title {
+			@include heading($color: $color-white);
+			margin-bottom: 30px;
+		}
+
+		&-text {
+			max-width: 394px;
+			@include text($color: $color-white);
+			margin-bottom: 30px;
+		}
+	}
+}
+
+
+// --- customers section ---
+
+.customers {
+	margin-bottom: 120px;
+
+	&-title {
+		@include heading;
+		text-align: center;
+		margin-bottom: 10px;
+	}
+
+	&-parag {
+		@include text;
+		text-align: center;
+		margin-bottom: 60px;
+	}
+
+	&-profile-wrapper {
+		display: flex;
+	}
+
+	&-profile {
+		background-color: $color-white;
+		box-shadow: $box-shadow;
+		@include flex-center;
+		flex-direction: column;
+		margin-right: $gap-small;
+		padding: 44px 42px 47px 40px;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		img {
+			width: 98px;
+			height: 98px;
+			margin-bottom: 24px;
+		}
+
+		&-desc {
+			@include text($color: $color-black);
+			margin-bottom: 25px;
+			text-align: center;
+		}
+
+		&-info {
+			@include text($weight: 700, $color: $color-main);
+		}
+	}
+}

@@ -3,43 +3,38 @@ document.addEventListener("DOMContentLoaded", function () {
 	const slides = document.querySelectorAll(
 		".products-overview-track .product-card"
 	);
-	const dotsContainer = document.querySelector(".products-overview-dots");
+	const dots = document.querySelectorAll(".products-overview-dots button");
 
 	const slidesToShow = 4; // amount of cards
-	const totalPages = Math.ceil(slides.length / slidesToShow);
-	let index = 0;
-	let slideWidth = slides[0].offsetWidth;
+	let index = 0; 
 
-	// сdots
-	for (let i = 0; i < totalPages; i++) {
-		const dot = document.createElement("button");
-		if (i === 0) dot.classList.add("active");
-		dotsContainer.appendChild(dot);
-
-		dot.addEventListener("click", () => {
-			index = i * slidesToShow;
-			updatePosition();
-			updateDots();
-		});
-	}
-
-	function updateDots() {
-		const dots = dotsContainer.querySelectorAll("button");
-		dots.forEach((dot, i) => {
-			dot.classList.toggle(
-				"active",
-				i === Math.floor(index / slidesToShow)
-			);
-		});
+	function getSlideWidth() {
+		if (!slides.length) return 0;
+		const style = getComputedStyle(slides[0]);
+		const marginRight = parseFloat(style.marginRight) || 0;
+		return slides[0].offsetWidth + marginRight;
 	}
 
 	function updatePosition() {
-		track.style.transform = `translateX(-${index * slideWidth}px)`;
+		const slideWidth = getSlideWidth();
+		track.style.transform = `translateX(-${
+			index * slideWidth * slidesToShow
+		}px)`;
+
+		dots.forEach((dot, i) => {
+			dot.classList.toggle("active", i === index);
+		});
 	}
 
-	// for diff. size
-	window.addEventListener("resize", () => {
-		slideWidth = slides[0].offsetWidth;
-		updatePosition();
+	// dots
+	dots.forEach((dot, i) => {
+		dot.addEventListener("click", () => {
+			index = i;
+			updatePosition();
+		});
 	});
+
+
+	window.addEventListener("resize", updatePosition);
+	window.addEventListener("load", updatePosition);
 });

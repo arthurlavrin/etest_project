@@ -18,8 +18,7 @@
   background-size: cover, cover;
   margin-bottom: 120px;
 }
-
-h2 {
+.banner-title {
   font-family: var(--font3);
   font-weight: 700;
   font-size: 19px;

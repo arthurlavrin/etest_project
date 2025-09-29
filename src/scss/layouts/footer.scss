@@ -7,7 +7,7 @@
 }
 
 
-// banner
+// --- banner ---
 
 .banner {
 	max-height: 192px;
@@ -17,17 +17,18 @@
 	background-repeat: no-repeat, no-repeat;
 	background-size: cover, cover;
 	margin-bottom: $gap-large * 2;
+
+	&-title {
+		font-family: var(--font3);
+		font-weight: 700;
+		font-size: 19px;
+		color: $color-white;
+		text-align: left;
+		padding-top: 37px;
+		margin-bottom: 32px;
+	}
 }
 
-h2 {
-	font-family: var(--font3);
-	font-weight: 700;
-	font-size: 19px;
-	color: $color-white;
-	text-align: left;
-	padding-top: 37px;
-	margin-bottom: 32px;
-}
 
 .benefits {
 	@include flex-between;
@@ -52,7 +53,7 @@ h2 {
 	}
 }
 
-// blocks
+// --- blocks ---
 
 .blocks {
 	@include flex-between;
@@ -162,7 +163,7 @@ p {
 }
 
 
-// Coperight
+// --- Coperight ---
 
 .copyright {
 	text-align: center;
