@@ -9,7 +9,7 @@
         <script src="./js/layout.js" defer></script>
 		<script src="./js/scroll-button.js" defer></script>
         <script src="./js/products-overview.js" defer></script>
-        <script src="./js/products-section.js" defer></script>
+        <script src="./js/products-section.js" type="module" defer></script>
 	</head>
 	<body>
 		<!-- header -->
@@ -292,7 +292,7 @@
 			</section>
             <!-- // products-overview -->
 
-            <section class="products-sections" id="products-sections"></section>
+            <section id="selected-products" class="products-sections"></section>
 			<!-- //products-sections - sales -->
 
 			<section class="content-banner wrapper">
@@ -313,8 +313,8 @@
 			</section>
 			<!-- // banner -->
 			
-            <section class="products-sections" id="new-products"></section>
-			<!-- // new-products -->
+            <section id="new-products" class="products-sections"></section>
+			<!-- // new-products - arrival -->
 
 			<section class="customers wrapper">
 				<h2 class="customers-title">

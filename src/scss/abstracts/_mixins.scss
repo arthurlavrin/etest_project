@@ -54,6 +54,24 @@
 	}
 }
 
+// for pagination
+
+@mixin prev-next ($color: $color-black) {
+	font-family: var(--second-family);
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 8px 12px;	
+	color: $color-black;
+	border: 2px solid $color-main;
+	border-radius: 6px;
+	transition: all 0.3s ease;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
 // --- FLEX-position ---
 @mixin flex-between($align: center) {
 	display: flex;

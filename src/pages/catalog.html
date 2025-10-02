@@ -1,18 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalog</title>
-    <link rel="stylesheet" href="/dist/css/main.css">
-</head>
-<body>
-    <!-- header -->
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Catalog</title>
+		<link rel="stylesheet" href="/dist/css/main.css" />
+		<script src="../js/layout.js" defer></script>
+		<script src="../js/catalog-page.js" type="module"></script>
+		<script src="../js/products-section.js" type="module"></script>
+		<script src="../js/scroll-button.js"></script>
+	</head>
+	<body>
+		<!-- header -->
 		<div id="header"></div>
+		<!-- // header -->
+
+		<!-- scroll-button -->
+		<a id="scroll-button" aria-label="Scroll to top"></a>
+		<!-- // scroll-button -->
+
+		<main>
+			<section class="products-toolbar">
+				<div id="results-count" class="results-count"></div>
+
+				<div class="toolbar-controls">
+					<select id="sortSelect">
+						<option value="">Default sorting</option>
+						<option value="price-asc">Price: Low → High</option>
+						<option value="price-desc">Price: High → Low</option>
+						<option value="popularity">Most Popular</option>
+						<option value="rating">Top Rated</option>
+					</select>
+
+					<input
+						id="searchInput"
+						type="search"
+						placeholder="Search products..."
+					/>
+				</div>
+			</section>
+			<!-- // products-toolbar -->
+
+			<div class="catalog-layout">
+                <section id="catalog-products" class="products-sections catalog"></section>
+            
+                <aside id="top-best-sets" class="sidebar">
+                    <!-- top best sets -->
+                </aside>
+            </div>
+            <!-- // catalog-layout -->
+
+			<div class="wrapper-pagination">
+				<div id="pagination" class="pagination"></div>
+			</div>
+
+            
+
+		</main>
 
 		<!-- footer -->
 		<div id="footer"></div>
-
-        <script src="../js/layout.js"></script>
-</body>
+		<!-- //footer -->
+	</body>
 </html>

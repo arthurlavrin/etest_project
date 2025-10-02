@@ -109,7 +109,7 @@ ul li:hover {
   color: #b92770;
 }
 
-.catalog::after {
+.catalog-arrow::after {
   content: "";
   display: inline-block;
   width: 8px;
