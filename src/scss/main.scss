@@ -16,7 +16,6 @@
     	display: none;
 	}
 }
-
 // ----
 
 .wrapper {
@@ -24,7 +23,6 @@
 }
 
 // --- hero section ---
-
 .hero {
 	background-color: #e7e8e9;
 	position: relative;
@@ -60,6 +58,50 @@
 		&-text {
 			@include text;
 			margin-bottom: 30px;
+		}
+	}
+
+	// --- adaptive ---
+	@include respond(lg) {
+		&-content {
+			padding: 100px 10px 200px; 
+			h1 {
+				font-size: 42px;
+			}
+		}
+	}
+
+	@include respond(md) {
+		&::after {
+			position: relative;   
+			right: auto;
+			top: auto;
+			transform: none;
+			width: 100%;
+			height: 250px;
+			margin: 20px 0;       
+			display: block;
+		}
+
+		&-content {
+			padding: 100px 20px 200px;
+
+			h1 {
+				font-size: 36px;
+			}
+		}
+	}
+
+	@include respond(sm) {
+		&::after {
+			content: none; 
+		}
+
+		&-content {
+			text-align: center; 
+			h1 {
+				font-size: 28px;
+			}
 		}
 	}
 }
@@ -131,6 +173,77 @@
 			}
 		}
 	}
+
+	// --- adaptive ---
+	@include respond(lg) {
+		padding: 30px;
+		gap: 30px;
+
+		&-left {
+			padding-left: 40px;
+		}
+
+		&-right {
+			width: 50%;
+			height: auto;
+
+			&-items {
+				padding: 120px 80px 100px 40px;
+			}
+		}
+	}
+
+	@include respond(md) {
+		flex-direction: column;
+		text-align: center;
+		padding: 20px;
+
+		&-left {
+			max-width: 100%;
+			padding-left: 0;
+			margin-bottom: 30px;
+			margin-top: 30px;
+			align-items: center;
+
+			&-desc {
+				h2 {
+					font-size: 25px;
+				}
+			}
+		}
+
+		&-right {
+			width: 100%;
+			height: 400px;
+
+			&-items {
+				align-items: center;
+				padding: 60px 30px;
+				text-align: center;
+
+				&-title {
+					font-size: 30px;
+				}
+			}
+		}
+	}
+
+	@include respond(sm) {
+		padding: 15px;
+
+		&-left-profile img {
+			width: 65px;
+			height: 70px;
+		}
+
+		&-right {
+			height: 300px;
+
+			&-items {
+				padding: 40px 20px;
+			}
+		}
+	}
 }
 
 .profile-desc {
@@ -144,6 +257,10 @@
 
 	span {
 		@include text($color: $color-black);
+	}
+
+	@include respond(md) {
+		text-align: center;
 	}
 }
 
@@ -271,6 +388,60 @@
 
 		&:hover {
 			background: darken($color-main, 10%);
+		}
+	}
+
+	// --- adaptiv ---
+
+	@include respond(lg) {
+		margin: 80px 50px;
+
+		.product-card {
+			width: 222px;
+			height: 450px;
+
+			&-content-text {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	@include respond(md) {
+		margin: 60px 30px;
+		padding: 0 10px;
+		&-track {
+
+		}
+		.product-card {
+			width: 250px;
+			height: 400px;
+		}
+	}
+
+	@include respond(sm) {
+		margin: 40px 15px;
+		padding: 0 10px;
+
+		&-wrapper {
+			overflow-x: auto; 
+			scroll-snap-type: x mandatory; 
+		}
+
+		&-track {
+			gap: 15px;
+		}
+
+		.product-card {
+			width: 100%; 
+			height: auto;
+			// height: 500px;
+			min-width: 250px;  
+			min-height: 340px;
+			scroll-snap-align: start;
+		}
+
+		&-btn, &-dots {
+			display: none; 
 		}
 	}
 }
