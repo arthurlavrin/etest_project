@@ -1,18 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="/dist/css/main.css">
-</head>
-<body>
-    <!-- header -->
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Contact Us</title>
+		<link rel="stylesheet" href="/dist/css/main.css" />
+		<link
+			rel="shortcut icon"
+			href="/src/assets/images/icons/favicon.png"
+			type="image/x-icon"
+		/>
+		<script src="../js/layout.js" defer></script>
+		<script src="../js/scroll-button.js" defer></script>
+        <script src="../js/contact.js" defer></script>
+	</head>
+	<body>
+		<!-- header -->
 		<div id="header"></div>
+		<!-- // header -->
+
+		<!-- scroll-button -->
+		<a id="scroll-button" aria-label="Scroll to top"></a>
+		<!-- // scroll-button -->
+
+		<main>
+			<section class="hero-contact">
+				<h1 class="hero-contact-title">Contact Us</h1>
+
+				<p class="hero-contact-text">
+					Duis vestibulum elit vel neque pharetra vulputate.<br />
+					Duis rutrum non risus in imperdiet.
+				</p>
+			</section>
+			<!-- // hero-contact -->
+
+			<section class="contact-info">
+				<div class="contact-info-wrapper">
+					<div class="contact-item">
+						<img
+							src="/src/assets/images/contact/badges/icon-location.png"
+							alt="Our Location"
+						/>
+						<h3>Our Location</h3>
+						<p>
+							1234 NW Bobcat Lane, St.<br />Robert, MO 65584-5678
+						</p>
+					</div>
+
+					<div class="contact-item">
+						<img
+							src="/src/assets/images/contact/badges/icon-time.png"
+							alt="Operating Time"
+						/>
+						<h3>Operating Time</h3>
+						<p>
+							Monday - Friday: 9am - 6 pm<br />Weekends: 10:30 am
+							- 6pm
+						</p>
+					</div>
+
+					<div class="contact-item">
+						<img
+							src="/src/assets/images/contact/badges/icon-email.png"
+							alt="Our Email"
+						/>
+						<h3>Our Email</h3>
+						<p>best@shop.com<br />info@bestshop.com</p>
+					</div>
+
+					<div class="contact-item">
+						<img
+							src="/src/assets/images/contact/badges/icon-phone.png"
+							alt="Call Us"
+						/>
+						<h3>Call Us</h3>
+						<p>(268)142-8413<br />(760)265-2917</p>
+					</div>
+				</div>
+			</section>
+            <!-- // contact-info -->
+
+			<section class="contact-form">
+				<div class="contact-form-wrapper">
+					<div class="contact-form-image">
+						<img
+							src="/src/assets/images/contact/img-feedback.png"
+							alt="Contact Us"
+						/>
+					</div>
+
+					<div class="contact-form-box">
+						<h2>Your Feedback Is Much Appreciated!</h2>
+						<p>
+							We will contact you when you complete the following
+							form!
+						</p>
+
+						<form id="feedbackForm">
+							<label for="name">Your Name *</label>
+							<input type="text" id="name" name="name" required />
+
+							<label for="email">Your Email Address *</label>
+							<input
+								type="email"
+								id="email"
+								name="email"
+								required
+							/>
+
+							<label for="topic">Topic *</label>
+							<input
+								type="text"
+								id="topic"
+								name="topic"
+								required
+							/>
+
+							<label for="message">Your Message *</label>
+							<textarea
+								id="message"
+								name="message"
+								rows="5"
+								required
+							></textarea>
+
+							<button type="submit" class="btn btn-send">Send</button>
+						</form>
+					</div>
+				</div>
+			</section>
+            <!-- // contact-form -->
+		</main>
 
 		<!-- footer -->
 		<div id="footer"></div>
-
-        <script src="../js/layout.js"></script>
-</body>
+		<!-- // footer -->
+	</body>
 </html>

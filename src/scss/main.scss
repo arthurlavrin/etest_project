@@ -6,6 +6,8 @@
 @use "components/buttons.scss";
 @use "pages/catalog";
 @use "components/products-section.scss";
+@use "pages/about";
+@use "pages/contact";
 
 .wrapper {
 	@include container;
@@ -138,7 +140,7 @@
 // --- products-overview section ---
 
 .products-overview {
-	margin-top: 106px;
+	margin: 106px 100px;
 
 	&-title {
 		text-align: center;
@@ -265,8 +267,6 @@
 
 
 
-
-
 // --- content-banner section ---
 
 .content-banner {
@@ -278,7 +278,10 @@
 			), url(/src/assets/images/homepage/banner.png);
 	background-repeat: no-repeat;
 	background-position: center;
-	margin-bottom: 20px;
+	background-size: cover;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	padding: 0 40px;
 
 	&-left {
 		margin: 29px 0 0 105px;
@@ -315,6 +318,7 @@
 // --- customers section ---
 
 .customers {
+	margin-top: 100px;
 	margin-bottom: 120px;
 
 	&-title {

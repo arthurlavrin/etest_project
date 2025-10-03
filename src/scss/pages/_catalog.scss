@@ -71,7 +71,7 @@
 .wrapper-pagination {
 	max-width: 910px;
 	display: flex;
-	justify-content: end;
+	justify-content: flex-end;
 }
 
 .pagination {
@@ -114,9 +114,10 @@
 
 	&__prev {
 		@include prev-next;
-		margin-right: 310px;
+		margin-right: 250px;
 		display: inline-flex;
 		align-items: center;
+		margin-right: 100px;
 		gap: 6px;
 
 		&::before {
@@ -136,7 +137,7 @@
 
 	&__next {
 		@include prev-next;
-		margin-left: 310px;
+		margin-left: 100px;
 
 		&::after {
 			content: "";

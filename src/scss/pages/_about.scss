@@ -1,0 +1,165 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// --- hero-about section ---
+
+.hero-about {
+	height: 554px;
+	@include flex-center;
+	flex-direction: column;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url(/src/assets/images/about-us/hero-about-us.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	&-title {
+		@include heading($size: 50px, $color: $color-white);
+		padding-bottom: 20px;
+		text-align: center;
+	}
+
+	&-text {
+		@include text($color: $colot-text-about);
+		text-align: center;
+	}
+}
+
+// --- badges section ---
+.badges {
+	margin: 80px 0;
+	text-align: center;
+
+	&-wrapper {
+		@include container;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 40px;
+	}
+
+	.badge-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 20px;
+
+		img {
+			width: 50px;
+			height: 50px;
+			margin-bottom: 15px;
+		}
+
+		h3 {
+			@include heading($size: 18px, $weight: 700);
+			margin-bottom: 10px;
+		}
+
+		p {
+			@include text($size: 15px, $color: $color-text);
+			max-width: 250px;
+		}
+
+		&:hover {
+			transform: translateY(-5px);
+			transition: transform 0.3s ease;
+		}
+	}
+}
+
+// --- weekly-arrivals section ---
+.weekly-arrivals {
+	margin: 100px 0;
+
+	&-wrapper {
+		@include container;
+		display: grid;
+		grid-template-columns: 1fr 615px;
+		align-items: center;
+		gap: 40px;
+
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr;
+			text-align: center;
+		}
+	}
+
+	&-text {
+		h2 {
+			@include heading($size: 32px, $weight: 700);
+			margin-bottom: 30px;
+		}
+
+		p {
+			@include text($size: 16px, $color: $color-text);
+			margin-bottom: 30px;
+		}
+	}
+
+	&-image {
+		img {
+			width: 100%;
+			height: auto;
+			box-shadow: $box-shadow;
+		}
+	}
+}
+
+// --- tean section ---
+
+.team {
+	margin: 100px 0;
+	text-align: center;
+
+	&-wrapper {
+		@include container;
+	}
+
+	&-title {
+		margin-bottom: 50px;
+
+		h2 {
+			@include heading($size: 50px, $weight: 900);
+			margin-bottom: 10px;
+		}
+
+		&-line {
+			display: block;
+			width: 440px;
+			height: 3px;
+			margin: 0 auto;
+			background-color: $color-main; // розовая линия
+		}
+	}
+
+	&-list {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 40px;
+
+		@media (max-width: 992px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (max-width: 600px) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&-member {
+		img {
+			width: 100%;
+			height: auto;
+			box-shadow: $box-shadow;
+			margin-bottom: 20px;
+		}
+
+		h3 {
+			@include heading($size: 22px, $weight: 700);
+			margin-bottom: 10px;
+		}
+
+		p {
+			@include text($size: 17px, $color: $color-text);
+		}
+	}
+}

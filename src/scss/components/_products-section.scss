@@ -5,12 +5,13 @@
 
 #new-products.products-sections,
 #selected-products.products-sections {
-	margin: 80px 120px;
+	// margin: 80px 120px;
 }
 
 .products-sections {
 	.products-block {
-		max-width: 900px;
+		max-width: 1300px;
+		margin: 0 auto;
 
 		&-title {
 			text-align: center;

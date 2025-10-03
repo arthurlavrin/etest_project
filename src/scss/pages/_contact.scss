@@ -1,0 +1,135 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// --- hero-contact section ---
+
+.hero-contact {
+	height: 554px;
+	@include flex-center;
+	flex-direction: column;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+		url(/src/assets/images/contact/hero-contact.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	&-title {
+		@include heading($size: 50px, $color: $color-white);
+		padding-bottom: 20px;
+		text-align: center;
+	}
+
+	&-text {
+		@include text($color: $colot-text-about);
+		text-align: center;
+	}
+}
+
+// --- contact-info section ---
+
+.contact-info {
+	margin: 100px 0;
+
+	&-wrapper {
+		@include container;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 40px;
+		text-align: center;
+
+		@media (max-width: 992px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (max-width: 600px) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.contact-item {
+		img {
+			width: 50px;
+			height: auto;
+			margin-bottom: 15px;
+		}
+
+		h3 {
+			@include heading($size: 18px, $weight: 700);
+			margin-bottom: 10px;
+		}
+
+		p {
+			@include text($size: 16px, $color: $color-text);
+		}
+	}
+}
+
+// --- contact-form section ---
+.contact-form {
+	margin: 100px 0;
+
+	&-wrapper {
+		@include container;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 40px;
+		align-items: center;
+
+		@media (max-width: 992px) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&-image img {
+		width: 100%;
+		box-shadow: $box-shadow;
+	}
+
+	&-box {
+		h2 {
+			@include heading($size: 25px, $weight: 700);
+			margin-bottom: 30px;
+		}
+
+		p {
+			@include text($size: 17px, $color: $color-text);
+			margin-bottom: 40px;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			// gap: 20px;
+
+			label {
+				@include text($color: $color-black, $weight: 700, $line: none);
+				margin-bottom: 8px;
+				text-align: left;
+			}
+
+			input,
+			textarea {
+				padding: 12px 15px;
+				margin-bottom: 37px;
+				border: 2px solid $color-main;
+				font-size: 18px;
+				font-weight: 700;
+				outline: none;
+
+				&:focus {
+					border-color: darken($color-main, 10%);
+				}
+			}
+
+			.btn {
+				&-send {
+					width: 90px;
+					height: 40px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+			}
+		}
+	}
+}

@@ -8,7 +8,6 @@ function updateResultsToolbar(list, currentPage, perPage) {
   el.innerHTML = `<p>Showing ${start}–${end} of ${total} results</p>`;
 }
 
-// --- глобальные переменные ---
 let products = [];
 let filteredProducts = [];
 let catalogContainer;
@@ -19,7 +18,7 @@ let currentPage = 1;
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    // Загружаем JSON
+    // JSON
     const res = await fetch("/src/assets/data.json");
     const { data } = await res.json();
     products = data;
@@ -46,18 +45,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     // --- Top Best Sets ---
     renderTopBestSets(products);
 
-    // обработчики сортировки и поиска
+    // sorting + searching
     const sortEl = document.getElementById("sortSelect");
     const searchEl = document.getElementById("searchInput");
 
     sortEl?.addEventListener("change", applySearchAndSort);
     searchEl?.addEventListener("input", debounce(applySearchAndSort, 250));
   } catch (err) {
-    console.error("Ошибка загрузки JSON:", err);
+    console.error("Loading error JSON:", err);
   }
 });
 
-// --- универсальная функция для new + selected ---
+// --- function for new + selected ---
 function renderSection(containerId, title, subtitle, btnText, products, blockFilter = null) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -92,7 +91,7 @@ function renderSection(containerId, title, subtitle, btnText, products, blockFil
   container.appendChild(block);
 }
 
-// --- рендер каталога ---
+// --- catalog render ---
 function renderCatalogPage(page = 1, items = filteredProducts) {
   catalogContainer.innerHTML = "";
 
@@ -130,7 +129,7 @@ function renderCatalogPage(page = 1, items = filteredProducts) {
   updateResultsToolbar(items, page, perPage);
 }
 
-// --- рендер пагинации ---
+// --- pagination render ---
 function renderPagination(totalItems = filteredProducts.length) {
   const totalPages = Math.ceil(totalItems / perPage);
 
@@ -154,7 +153,7 @@ function renderPagination(totalItems = filteredProducts.length) {
     </nav>
   `;
 
-  // события
+  // event
   paginationEl.querySelectorAll(".pagination__page").forEach((btn) => {
     btn.addEventListener("click", () => {
       currentPage = Number(btn.dataset.page);
@@ -179,7 +178,7 @@ function renderPagination(totalItems = filteredProducts.length) {
   });
 }
 
-// --- сортировка + поиск ---
+// --- sorting + search ---
 function sortArray(arr, value) {
   arr.sort((a, b) => {
     switch (value) {
