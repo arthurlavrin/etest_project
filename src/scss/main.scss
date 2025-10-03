@@ -9,6 +9,16 @@
 @use "pages/about";
 @use "pages/contact";
 
+// --- media queries changes for scrolling button
+
+#scroll-button {
+	@include respond(sm) {
+    	display: none;
+	}
+}
+
+// ----
+
 .wrapper {
 	@include container;
 }

@@ -2,7 +2,6 @@
 @use "../abstracts/mixins" as *;
 
 // --- hero-contact section ---
-
 .hero-contact {
 	height: 554px;
 	@include flex-center;
@@ -17,16 +16,24 @@
 		@include heading($size: 50px, $color: $color-white);
 		padding-bottom: 20px;
 		text-align: center;
+
+		@include respond(sm) {
+			font-size: 32px;
+		}
 	}
 
 	&-text {
 		@include text($color: $colot-text-about);
 		text-align: center;
+
+		@include respond(sm) {
+			font-size: 14px;
+			padding: 0 20px;
+		}
 	}
 }
 
 // --- contact-info section ---
-
 .contact-info {
 	margin: 100px 0;
 
@@ -37,12 +44,14 @@
 		gap: 40px;
 		text-align: center;
 
-		@media (max-width: 992px) {
+		@include respond(md) {
 			grid-template-columns: repeat(2, 1fr);
+			gap: 30px;
 		}
 
-		@media (max-width: 600px) {
+		@include respond(sm) {
 			grid-template-columns: 1fr;
+			gap: 20px;
 		}
 	}
 
@@ -51,6 +60,10 @@
 			width: 50px;
 			height: auto;
 			margin-bottom: 15px;
+
+			@include respond(sm) {
+				width: 40px;
+			}
 		}
 
 		h3 {
@@ -60,6 +73,10 @@
 
 		p {
 			@include text($size: 16px, $color: $color-text);
+
+			@include respond(sm) {
+				font-size: 14px;
+			}
 		}
 	}
 }
@@ -75,36 +92,55 @@
 		gap: 40px;
 		align-items: center;
 
-		@media (max-width: 992px) {
+		@include respond(md) {
 			grid-template-columns: 1fr;
+			text-align: center;
+			padding: 0 15px;
 		}
 	}
 
 	&-image img {
 		width: 100%;
 		box-shadow: $box-shadow;
+
+		@include respond(sm) {
+			max-width: 100%;
+		}
 	}
 
 	&-box {
+		padding: 10px;
+
 		h2 {
 			@include heading($size: 25px, $weight: 700);
 			margin-bottom: 30px;
+
+			@include respond(sm) {
+				font-size: 20px;
+			}
 		}
 
 		p {
 			@include text($size: 17px, $color: $color-text);
 			margin-bottom: 40px;
+
+			@include respond(sm) {
+				font-size: 14px;
+			}
 		}
 
 		form {
 			display: flex;
 			flex-direction: column;
-			// gap: 20px;
 
 			label {
 				@include text($color: $color-black, $weight: 700, $line: none);
 				margin-bottom: 8px;
 				text-align: left;
+
+				@include respond(sm) {
+					font-size: 14px;
+				}
 			}
 
 			input,
@@ -119,16 +155,28 @@
 				&:focus {
 					border-color: darken($color-main, 10%);
 				}
+
+				@include respond(sm) {
+					font-size: 14px;
+					padding: 10px 12px;
+				}
 			}
 
-			.btn {
-				&-send {
-					width: 90px;
-					height: 40px;
-					display: flex;
-					justify-content: center;
-					align-items: center;
+			.btn-send {
+				width: 90px;
+				height: 40px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				@include respond(sm) {
+					width: 100%;
 				}
+			}
+
+			textarea {
+				min-height: 120px;
+				resize: none; // 🔹 убрали ручное изменение размера
 			}
 		}
 	}

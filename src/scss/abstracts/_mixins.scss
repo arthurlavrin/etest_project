@@ -56,12 +56,12 @@
 
 // for pagination
 
-@mixin prev-next ($color: $color-black) {
+@mixin prev-next($color: $color-black) {
 	font-family: var(--second-family);
 	font-size: 11px;
 	font-weight: 700;
 	text-transform: uppercase;
-	padding: 8px 12px;	
+	padding: 8px 12px;
 	color: $color-black;
 	border: 2px solid $color-main;
 	border-radius: 6px;
@@ -85,11 +85,28 @@
 	align-items: $align;
 }
 
-
 // --- IMG background
 
-@mixin background ($position: center, $size: cover, $repeat: no-repeat) {
+@mixin background($position: center, $size: cover, $repeat: no-repeat) {
 	background-position: $position;
 	background-size: $size;
 	background-repeat: $repeat;
+}
+
+// --- media queries ---
+
+@mixin respond($breakpoint) {
+	@if $breakpoint == sm {
+		@media (max-width: #{$breakpoint-sm}) {
+			@content;
+		}
+	} @else if $breakpoint == md {
+		@media (max-width: #{$breakpoint-md}) {
+			@content;
+		}
+	} @else if $breakpoint == lg {
+		@media (max-width: #{$breakpoint-lg}) {
+			@content;
+		}
+	}
 }
