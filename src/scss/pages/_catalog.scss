@@ -9,6 +9,10 @@
 	@include flex-between;
 
 	// adaptive
+	@include respond(lg) {
+		padding-left: 20px;
+	}
+
 	@include respond(md) {
 		flex-direction: column;
 		align-items: flex-start;
@@ -103,6 +107,11 @@
 	grid-template-columns: 1fr 339px; 
 	gap: 30px;
 	margin-top: 30px;
+
+	// adaptive
+	@include respond(sm) {
+		display: inline;
+	}
 }
 
 
