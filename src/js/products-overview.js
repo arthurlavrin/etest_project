@@ -1,106 +1,84 @@
-document.addEventListener("DOMContentLoaded", function () {
-	const track = document.querySelector(".products-overview-track");
-	let slides = document.querySelectorAll(".products-overview-track .product-card");
-	const dots = document.querySelectorAll(".products-overview-dots button");
-	const prevBtn = document.querySelector(".products-overview-btn.prev");
-	const nextBtn = document.querySelector(".products-overview-btn.next");
+document.addEventListener("DOMContentLoaded", () => {
+  const root  = document.querySelector(".products-overview");
+  if (!root) return;
 
-	let index = 1; // начинаем с 1 (так как 0 — это клон последнего)
-	let isTransitioning = false;
+  const track = root.querySelector(".products-overview-track");
+  const slides = Array.from(track.querySelectorAll(".product-card"));
+  const prevBtn = root.querySelector(".products-overview-btn.prev");
+  const nextBtn = root.querySelector(".products-overview-btn.next");
+  const dotsWrap = root.querySelector(".products-overview-dots");
 
-	// --- клонируем первый и последний слайд ---
-	const firstClone = slides[0].cloneNode(true);
-	const lastClone = slides[slides.length - 1].cloneNode(true);
-	firstClone.classList.add("clone");
-	lastClone.classList.add("clone");
+  if (!slides.length) return;
 
-	track.appendChild(firstClone);
-	track.insertBefore(lastClone, slides[0]);
+  let slidesToShow = 4; 
 
-	// обновляем slides
-	slides = document.querySelectorAll(".products-overview-track .product-card");
 
-	// --- ширина слайда ---
-	function getSlideWidth() {
-		if (!slides.length) return 0;
-		const style = getComputedStyle(slides[0]);
-		const marginRight = parseFloat(style.marginRight) || 0;
-		return slides[0].offsetWidth + marginRight;
-	}
+  function getSlideWidth() {
+    const el = slides[0];
+    const cs = getComputedStyle(el);
+    const mr = parseFloat(cs.marginRight) || 0;
+    return el.offsetWidth + mr;
+  }
 
-	// --- перемещение с анимацией ---
-	function setTranslate() {
-		const slideWidth = getSlideWidth();
-		track.style.transition = "transform 0.4s ease";
-		track.style.transform = `translateX(-${index * slideWidth}px)`;
-	}
+  function getSlidesToShow() {
+    return window.innerWidth <= 768 ? 1 : 4;
+  }
 
-	// --- прыжок без анимации на реальный слайд ---
-	function jumpToRealSlide() {
-		const slideWidth = getSlideWidth();
-		track.style.transition = "none";
-		track.style.transform = `translateX(-${index * slideWidth}px)`;
-		isTransitioning = false;
-	}
+  function pagesCount() {
+    return Math.max(1, Math.ceil(slides.length / slidesToShow));
+  }
 
-	// --- обновляем позицию ---
-	function updatePosition() {
-		if (isTransitioning) return;
-		isTransitioning = true;
-		setTranslate();
+  function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = "";
+    const total = pagesCount();
+    for (let i = 0; i < total; i++) {
+      const btn = document.createElement("button");
+      if (i === page) btn.classList.add("active");
+      btn.addEventListener("click", () => {
+        page = i;
+        update();
+      });
+      dotsWrap.appendChild(btn);
+    }
+  }
 
-		track.addEventListener(
-			"transitionend",
-			() => {
-				if (slides[index].classList.contains("clone")) {
-					if (index === 0) {
-						index = slides.length - 2; // прыжок на реальный последний
-					} else if (index === slides.length - 1) {
-						index = 1; // прыжок на реальный первый
-					}
-					jumpToRealSlide();
-				} else {
-					isTransitioning = false;
-				}
-			},
-			{ once: true }
-		);
+  function update() {
+    const w = getSlideWidth();
+    const total = pagesCount();
 
-		// обновляем точки (реальные слайды)
-		dots.forEach((dot, i) => {
-			dot.classList.toggle("active", i === (index - 1) % (slides.length - 2));
-		});
-	}
+    page = (page + total) % total;
 
-	// --- кнопки prev / next ---
-	if (nextBtn) {
-		nextBtn.addEventListener("click", () => {
-			if (index >= slides.length - 1) return;
-			index++;
-			updatePosition();
-		});
-	}
+    track.style.transition = "transform 0.4s ease";
+    track.style.transform = `translateX(-${page * w * slidesToShow}px)`;
 
-	if (prevBtn) {
-		prevBtn.addEventListener("click", () => {
-			if (index <= 0) return;
-			index--;
-			updatePosition();
-		});
-	}
+    if (dotsWrap) {
+      Array.from(dotsWrap.children).forEach((d, i) =>
+        d.classList.toggle("active", i === page)
+      );
+    }
 
-	// --- dots ---
-	dots.forEach((dot, i) => {
-		dot.addEventListener("click", () => {
-			index = i + 1; // сдвиг, потому что 0 — клон
-			updatePosition();
-		});
-	});
+    const isMobile = slidesToShow === 1;
+    if (prevBtn) prevBtn.style.display = isMobile ? "none" : "";
+    if (nextBtn) nextBtn.style.display = isMobile ? "none" : "";
+    if (dotsWrap) dotsWrap.style.display = isMobile ? "none" : "";
+  }
 
-	// --- ресайз ---
-	window.addEventListener("resize", () => jumpToRealSlide());
-	window.addEventListener("load", () => jumpToRealSlide());
+  function next() { page++; update(); }
+  function prev() { page--; update(); }
 
-	// --- первый запуск ---
-	jumpToRealSlide();
+  function init() {
+    slidesToShow = getSlidesToShow();
+    buildDots();
+    update();
+  }
+
+  // --- events ---
+  nextBtn?.addEventListener("click", next);
+  prevBtn?.addEventListener("click", prev);
+
+  window.addEventListener("resize", init);
+  window.addEventListener("load", init);
+
+  init();
 });

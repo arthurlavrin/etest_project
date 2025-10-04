@@ -493,6 +493,89 @@
 			margin-bottom: 30px;
 		}
 	}
+
+	// --- adaptiv ---
+	@include respond(lg) {
+		height: 380px;
+		padding: 0 30px;
+		gap: 30px;
+
+		&-left {
+			margin: 20px 0 0 60px;
+
+			&-title {
+				font-size: 180px;
+			}
+
+			&-text {
+				font-size: 18px;
+				margin-bottom: 70px;
+			}
+		}
+
+		&-right {
+			&-text {
+				max-width: 350px;
+			}
+		}
+	}
+
+	@include respond(md) {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		height: auto;
+		padding: 60px 20px;
+
+		&-left {
+			margin: 0;
+			&-title {
+				font-size: 140px;
+			}
+			&-text {
+				margin-bottom: 40px;
+				font-size: 18px;
+			}
+		}
+
+		&-right {
+			align-items: center;
+			&-text {
+				max-width: 80%;
+			}
+		}
+	}
+
+	@include respond(sm) {
+		padding: 40px 10px;
+		flex-direction: column;
+		text-align: center;
+		gap: 20px;
+
+		&-left {
+			margin: 0;
+			&-title {
+				font-size: 80px;
+			}
+			&-text {
+				font-size: 16px;
+				margin-bottom: 20px;
+			}
+		}
+
+		&-right {
+			align-items: center;
+			&-title {
+				font-size: 22px;
+				margin-bottom: 15px;
+			}
+			&-text {
+				max-width: 100%;
+				font-size: 15px;
+				margin-bottom: 20px;
+			}
+		}
+	}
 }
 
 
@@ -544,6 +627,89 @@
 
 		&-info {
 			@include text($weight: 700, $color: $color-main);
+		}
+	}
+
+	// --- adaptive ---
+	@include respond(lg) {
+		padding: 0 30px;
+
+		&-profile {
+			max-width: 300px;
+			padding: 40px 35px;
+			img {
+				width: 90px;
+				height: 90px;
+			}
+		}
+	}
+
+	@include respond(md) {
+		padding: 0 20px;
+
+		&-profile-wrapper {
+			gap: 25px;
+		}
+
+		&-profile {
+			max-width: 280px;
+			padding: 35px 30px;
+
+			img {
+				width: 80px;
+				height: 80px;
+			}
+
+			&-desc {
+				font-size: 15px;
+			}
+
+			&-info {
+				text-align: center;
+			}
+		}
+	}
+
+	@include respond(sm) {
+		padding: 0 10px;
+		margin: 60px 0 80px;
+		&-title {
+			font-size: 35px;
+		}
+		&-parag {
+			margin-bottom: 30px;
+		}
+
+		&-profile-wrapper {
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+		}
+
+		&-profile {
+			width: 100%;
+			max-width: 90%;
+			padding: 30px 20px;
+			margin: 0 auto 20px;
+
+			img {
+				width: 70px;
+				height: 70px;
+			}
+
+			&-desc {
+				font-size: 14px;
+				margin-bottom: 15px;
+			}
+
+			&-info {
+				font-size: 15px;
+			}
+		}
+
+		.customers-profile:last-child {
+			margin-right: auto; // сброс, если раньше было другое правило
+			margin-left: auto;
 		}
 	}
 }

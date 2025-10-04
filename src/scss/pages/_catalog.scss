@@ -7,9 +7,26 @@
 .products-toolbar {
 	@include container;
 	@include flex-between;
+
+	// adaptive
+	@include respond(md) {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 15px;
+		padding-left: 20px;
+	}
+
+	@include respond(sm) {
+		padding-right: 20px;
+	}
 }
 .results-count {
 	@include text($size: 16px);
+
+	// adaptive
+	@include respond(sm) {
+		font-size: 14px;
+	}
 }
 
 // toolbar-controls
@@ -46,6 +63,11 @@
 			12px center; // добавляем свою иконку
 		background-size: 14px;
 		padding-right: 35px; 
+
+		// adaptive
+		@include respond(sm) {
+			min-width: 100%;
+		}
 	}
 
 	input[type="search"] {
@@ -54,6 +76,23 @@
 			12px center;
 		background-size: 16px;
 		padding-right: 35px;
+
+		// adaptive
+		@include respond(sm) {
+			min-width: 100%;
+		}
+	}
+
+	// --- adaptive ---
+	@include respond(md) {
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	@include respond(sm) {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 15px;
 	}
 }
 
@@ -72,6 +111,13 @@
 	max-width: 910px;
 	display: flex;
 	justify-content: flex-end;
+	padding: 0 20px;
+
+	// adaptive
+	@include respond(sm) {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 }
 
 .pagination {
@@ -80,6 +126,12 @@
 	justify-content: flex-end;
 	gap: 10px;
 	margin: 40px 0;
+
+	// adaptive
+	@include respond(sm) {
+		padding-right: 20px;
+		gap: 0;
+	}
 
 	button:not(.pagination__next):not(.pagination__prev) {
 		// border: none;
@@ -110,6 +162,12 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
+
+		li {
+			@include respond(sm) {
+				margin-right: 0;
+			}
+		}
 	}
 
 	&__prev {
@@ -119,6 +177,11 @@
 		align-items: center;
 		margin-right: 100px;
 		gap: 6px;
+
+		// adaptive
+		@include respond(sm) {
+			margin-right: 20px;
+		}
 
 		&::before {
 			content: "";
@@ -151,6 +214,16 @@
 			border-right: 1px solid #000;
 			transform: rotate(45deg);
 			vertical-align: middle;
+
+			@include respond(sm) {
+			margin-left: 0;    // убираем лишний отступ
+		}
+		}
+
+		// adaptive
+		@include respond(sm) {
+			margin-left: 20px;
+			width: 82px;
 		}
 	}
 }
