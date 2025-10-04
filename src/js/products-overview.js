@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!slides.length) return;
 
-  let slidesToShow = 4; 
+  let slidesToShow = 4;
+  let page = 0; 
 
 
   function getSlideWidth() {

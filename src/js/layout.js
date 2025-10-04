@@ -47,7 +47,8 @@
             );
     }
 
-    // loading header and footer
+    // loading header, footer and auth modal
     loadPart("header", "header.html");
     loadPart("footer", "footer.html");
+    loadPart("auth-modal", "auth-modal.html");
 })();
