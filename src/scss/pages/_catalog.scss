@@ -1,6 +1,224 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
+// --- filters section ---
+.filters-section {
+	background-color: #f8f8f8;
+	border-bottom: 1px solid $color-border;
+	padding: 20px 0;
+	margin-bottom: 30px;
+}
+
+.filters-container {
+	@include container;
+}
+
+.filters-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+
+	.btn-toggle-filters {
+		background-color: $color-main;
+		border: none;
+		color: $color-white;
+		padding: 12px 24px;
+		font-family: var(--font-family);
+		font-weight: 700;
+		font-size: 16px;
+		cursor: pointer;
+		border-radius: 4px;
+		transition: all 0.3s ease;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		.toggle-arrow {
+			font-size: 12px;
+			transition: transform 0.3s ease;
+		}
+
+		&.active .toggle-arrow {
+			transform: rotate(180deg);
+		}
+
+		&:hover {
+			background-color: darken($color-main, 10%);
+		}
+	}
+
+	.btn-reset {
+		background: none;
+		border: 2px solid $color-main;
+		color: $color-main;
+		padding: 8px 20px;
+		font-family: var(--font-family);
+		font-weight: 600;
+		font-size: 14px;
+		cursor: pointer;
+		border-radius: 4px;
+		transition: all 0.3s ease;
+
+		&:hover {
+			background-color: $color-main;
+			color: $color-white;
+		}
+	}
+
+	@include respond(sm) {
+		.btn-toggle-filters {
+			font-size: 14px;
+			padding: 10px 20px;
+		}
+	}
+}
+
+.filters-list {
+	display: flex;
+	gap: 15px;
+	flex-wrap: wrap;
+
+	@include respond(sm) {
+		flex-direction: column;
+		gap: 10px;
+	}
+}
+
+.filter-item {
+	position: relative;
+
+	.filter-toggle {
+		background-color: $color-white;
+		border: 2px solid $color-border;
+		padding: 10px 20px;
+		font-family: var(--font-family);
+		font-weight: 600;
+		font-size: 14px;
+		color: $color-black;
+		cursor: pointer;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		transition: all 0.3s ease;
+
+		.filter-arrow {
+			font-size: 10px;
+			transition: transform 0.3s ease;
+		}
+
+		&:hover {
+			border-color: $color-main;
+			color: $color-main;
+		}
+
+		&.active {
+			background-color: $color-main;
+			border-color: $color-main;
+			color: $color-white;
+
+			.filter-arrow {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	.filter-dropdown {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		margin-top: 5px;
+		background-color: $color-white;
+		border: 2px solid $color-border;
+		border-radius: 4px;
+		padding: 15px;
+		min-width: 200px;
+		box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+		z-index: 100;
+		display: none;
+
+		&.active {
+			display: block;
+		}
+
+		.filter-option {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 8px 0;
+			cursor: pointer;
+			transition: color 0.3s ease;
+
+			&:hover {
+				color: $color-main;
+			}
+
+			input[type="checkbox"] {
+				width: 18px;
+				height: 18px;
+				cursor: pointer;
+				accent-color: $color-main;
+			}
+
+			span {
+				font-family: var(--font-family);
+				font-size: 14px;
+				font-weight: 500;
+				color: $color-black;
+			}
+
+			input[type="checkbox"]:checked + span {
+				color: $color-main;
+				font-weight: 600;
+			}
+		}
+	}
+
+	// Open dropdown on hover (desktop) with delay to prevent disappearing
+	@media (width >= 769px) {
+		position: relative;
+
+		&:hover .filter-dropdown {
+			display: block;
+		}
+
+		// Add a small bridge area between toggle and dropdown
+		&::after {
+			content: '';
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			height: 5px;
+			background: transparent;
+		}
+
+		&:hover .filter-toggle {
+			border-color: $color-main;
+			color: $color-main;
+
+			.filter-arrow {
+				transform: rotate(180deg);
+			}
+		}
+
+		.filter-dropdown:hover {
+			display: block;
+		}
+	}
+
+	@include respond(sm) {
+		.filter-dropdown {
+			position: relative;
+			margin-top: 0;
+			border: none;
+			box-shadow: none;
+			padding: 10px 0 0;
+		}
+	}
+}
+
 // --- products-toolbar section ---
 
 //  products-toolbar
@@ -24,6 +242,7 @@
 		padding-right: 20px;
 	}
 }
+
 .results-count {
 	@include text($size: 16px);
 
@@ -44,7 +263,8 @@
 	select,
 	input[type="search"] {
 		@include text($size: 16px);
-		border: 1px solid #ddd;
+
+		border: 1px solid #dddddd;
 		border-radius: 4px;
 		height: 42px;
 		line-height: 1.2;
@@ -52,7 +272,7 @@
 		outline: none;
 		transition: all 0.2s ease-in-out;
 		background-color: $color-white;
-		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
 
 		&:focus {
 			box-shadow: 0 0 0 2px rgba($color-main, 0.2);
@@ -65,6 +285,7 @@
 		appearance: none; 
 		background: url("/src/assets/images/icons/arrow.png") no-repeat right
 			12px center; // добавляем свою иконку
+
 		background-size: 14px;
 		padding-right: 35px; 
 
@@ -103,6 +324,7 @@
 // --- catalog-layout ---
 .catalog-layout {
 	@include container;
+
 	display: grid;
 	grid-template-columns: 1fr 339px; 
 	gap: 30px;
@@ -142,7 +364,7 @@
 		gap: 0;
 	}
 
-	button:not(.pagination__next):not(.pagination__prev) {
+	button:not(.pagination__next, .pagination__prev) {
 		// border: none;
 		background: none;
 		font-size: 15px;
@@ -181,7 +403,7 @@
 
 	&__prev {
 		@include prev-next;
-		margin-right: 250px;
+
 		display: inline-flex;
 		align-items: center;
 		margin-right: 100px;
@@ -199,9 +421,8 @@
 			height: 8px;
 			margin-right: 10px;
 			color: $color-black;
-
-			border-left: 1px solid #000;
-			border-bottom: 1px solid #000;
+			border-left: 1px solid #000000;
+			border-bottom: 1px solid #000000;
 			transform: rotate(45deg);
 			vertical-align: middle;
 		}
@@ -209,6 +430,7 @@
 
 	&__next {
 		@include prev-next;
+
 		margin-left: 100px;
 
 		&::after {
@@ -218,9 +440,8 @@
 			height: 8px;
 			margin-left: 10px;
 			color: $color-black;
-
-			border-top: 1px solid #000;
-			border-right: 1px solid #000;
+			border-top: 1px solid #000000;
+			border-right: 1px solid #000000;
 			transform: rotate(45deg);
 			vertical-align: middle;
 

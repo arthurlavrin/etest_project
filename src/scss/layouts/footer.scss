@@ -11,8 +11,8 @@
 
 .banner {
 	min-height: 192px;
-	background-image: url(/src/assets/images/homepage/benefits/vector-lines.svg),
-		url(/src/assets/images/homepage/benefits/bg-benefits.png);
+	background-image: url("/src/assets/images/homepage/benefits/vector-lines.svg"),
+		url("/src/assets/images/homepage/benefits/bg-benefits.png");
 	background-position: center center, center center;
 	background-repeat: repeat-y, repeat-y;
 	background-size: cover, cover;
@@ -60,11 +60,13 @@
 
 .benefits {
 	@include flex-between;
+
 	flex-wrap: wrap;
 	gap: $gap-small;
 
 	&-item {
 		@include flex-between;
+
 		margin-bottom: $gap-medium;
 
 		img {
@@ -85,16 +87,19 @@
 	@include respond(md) {
 		justify-content: center;
 		padding: 0 20px;
+
 		&-item {
 			flex: 0 1 45%;
 			justify-content: center;
 			flex-direction: column;
 			text-align: center;
+
 			img {
 				width: 50px;
 				height: 50px;
 				margin: 0 0 10px;
 			}
+
 			p {
 				font-size: 14px;
 			}
@@ -106,12 +111,15 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: $gap-small;
+
 		&-item {
 			text-align: center;
 			flex-direction: column;
+
 			img {
-				margin: 0 0 10px 0;
+				margin: 0 0 10px;
 			}
+
 			p {
 				font-size: 13px;
 				text-align: center;
@@ -124,6 +132,7 @@
 
 .blocks {
 	@include flex-between;
+
 	gap: 60px;
 	flex-wrap: wrap; 
 
@@ -150,6 +159,7 @@ p {
 
     .links {
         @include flex-between(flex-start);
+
         width: 100%;
         flex-wrap: wrap;
         gap: 0;
@@ -236,6 +246,7 @@ p {
 		.left-block {
 			flex: 0 1 60%;
 		}
+
 		.right-block {
 			flex: 0 1 35%;
 		}
@@ -260,6 +271,7 @@ p {
 			.links {
 				justify-content: center;
 				gap: 30px;
+
 				.links-list {
 					max-width: 180px;
 				}
@@ -269,6 +281,7 @@ p {
 		.right-block {
 			display: flex;
 			align-items: center;
+
 			.info {
 				justify-content: center;
 				padding-bottom: 50px;
@@ -291,6 +304,7 @@ p {
 			gap: 25px;
 			padding-left: 30px;
 			margin-bottom: 10px;
+
 			h3 {
 				text-align: start;
 			}
@@ -303,6 +317,7 @@ p {
 
 		.right-block {
 			display: block;
+
 			.info {
 				align-content: center;
 			}

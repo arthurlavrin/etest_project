@@ -40,6 +40,130 @@
 		<!-- // scroll-button -->
 
 		<main>
+			<!-- Filters Section -->
+			<section class="filters-section">
+				<div class="filters-container wrapper">
+					<div class="filters-header">
+						<button id="toggle-filters-btn" class="btn-toggle-filters">
+							<span>Filter By</span>
+							<span class="toggle-arrow">▼</span>
+						</button>
+						<button id="reset-filters-btn" class="btn-reset" style="display: none;">Reset All</button>
+					</div>
+					
+					<div class="filters-list" id="filters-list" style="display: none;">
+						<!-- Category Filter -->
+						<div class="filter-item">
+							<button class="filter-toggle" data-filter="category">
+								<span>Category</span>
+								<span class="filter-arrow">▼</span>
+							</button>
+							<div class="filter-dropdown">
+								<label class="filter-option">
+									<input type="checkbox" name="category" value="carry-ons">
+									<span>Carry-ons</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="category" value="suitcases">
+									<span>Suitcases</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="category" value="luggage sets">
+									<span>Luggage Sets</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="category" value="kids' luggage">
+									<span>Kids' Luggage</span>
+								</label>
+							</div>
+						</div>
+
+						<!-- Color Filter -->
+						<div class="filter-item">
+							<button class="filter-toggle" data-filter="color">
+								<span>Color</span>
+								<span class="filter-arrow">▼</span>
+							</button>
+							<div class="filter-dropdown">
+								<label class="filter-option">
+									<input type="checkbox" name="color" value="red">
+									<span>Red</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="color" value="blue">
+									<span>Blue</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="color" value="green">
+									<span>Green</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="color" value="black">
+									<span>Black</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="color" value="grey">
+									<span>Grey</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="color" value="yellow">
+									<span>Yellow</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="color" value="pink">
+									<span>Pink</span>
+								</label>
+							</div>
+						</div>
+
+						<!-- Size Filter -->
+						<div class="filter-item">
+							<button class="filter-toggle" data-filter="size">
+								<span>Size</span>
+								<span class="filter-arrow">▼</span>
+							</button>
+							<div class="filter-dropdown">
+								<label class="filter-option">
+									<input type="checkbox" name="size" value="S">
+									<span>S</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="size" value="M">
+									<span>M</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="size" value="L">
+									<span>L</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="size" value="XL">
+									<span>XL</span>
+								</label>
+							</div>
+						</div>
+
+						<!-- Sales Status Filter -->
+						<div class="filter-item">
+							<button class="filter-toggle" data-filter="salesStatus">
+								<span>Status</span>
+								<span class="filter-arrow">▼</span>
+							</button>
+							<div class="filter-dropdown">
+								<label class="filter-option">
+									<input type="checkbox" name="salesStatus" value="true">
+									<span>On Sale</span>
+								</label>
+								<label class="filter-option">
+									<input type="checkbox" name="salesStatus" value="false">
+									<span>Regular Price</span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- // filters-section -->
+
 			<section class="products-toolbar">
 				<div id="results-count" class="results-count"></div>
 

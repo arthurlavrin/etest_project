@@ -11,6 +11,7 @@
 			type="image/x-icon"
 		/>
 		<script src="../js/layout.js" defer></script>
+		<script src="../js/cart-handler.js" defer></script>
 		<script src="../js/auth-modal.js" defer></script>
 		<script src="../js/scroll-button.js" defer></script>
         <script src="../js/contact.js" defer></script>
@@ -102,33 +103,47 @@
 							form!
 						</p>
 
+						<div id="form-message" class="form-message" style="display: none;"></div>
+
 						<form id="feedbackForm">
-							<label for="name">Your Name *</label>
-							<input type="text" id="name" name="name" required />
+							<div class="form-field">
+								<label for="name">Your Name *</label>
+								<input type="text" id="name" name="name" required />
+								<span class="error-message"></span>
+							</div>
 
-							<label for="email">Your Email Address *</label>
-							<input
-								type="email"
-								id="email"
-								name="email"
-								required
-							/>
+							<div class="form-field">
+								<label for="email">Your Email Address *</label>
+								<input
+									type="email"
+									id="email"
+									name="email"
+									required
+								/>
+								<span class="error-message"></span>
+							</div>
 
-							<label for="topic">Topic *</label>
-							<input
-								type="text"
-								id="topic"
-								name="topic"
-								required
-							/>
+							<div class="form-field">
+								<label for="topic">Topic *</label>
+								<input
+									type="text"
+									id="topic"
+									name="topic"
+									required
+								/>
+								<span class="error-message"></span>
+							</div>
 
-							<label for="message">Your Message *</label>
-							<textarea
-								id="message"
-								name="message"
-								rows="5"
-								required
-							></textarea>
+							<div class="form-field">
+								<label for="message">Your Message *</label>
+								<textarea
+									id="message"
+									name="message"
+									rows="5"
+									required
+								></textarea>
+								<span class="error-message"></span>
+							</div>
 
 							<button type="submit" class="btn btn-send">Send</button>
 						</form>

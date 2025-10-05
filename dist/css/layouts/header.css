@@ -156,7 +156,7 @@
   top: -5px;
   right: -5px;
   background-color: #b92770;
-  color: #fff;
+  color: #ffffff;
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 11px;
@@ -312,7 +312,7 @@
   }
 }
 .nav-menu ul li a {
-  color: #000;
+  color: #000000;
   text-decoration: none;
   transition: color 0.3s ease;
   display: block;
@@ -320,7 +320,7 @@
 }
 @media (max-width: 768px) {
   .nav-menu ul li a {
-    color: #fff;
+    color: #ffffff;
     font-size: 28px;
     padding: 10px 20px;
   }
@@ -338,8 +338,8 @@
   width: 8px;
   height: 8px;
   margin-left: 6px;
-  border-left: 2px solid #000;
-  border-bottom: 2px solid #000;
+  border-left: 2px solid #000000;
+  border-bottom: 2px solid #000000;
   transform: rotate(-45deg);
   vertical-align: 5px;
   transition: border-color 0.3s ease;

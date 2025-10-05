@@ -4,10 +4,12 @@
 // --- hero-about section ---
 .hero-about {
 	height: 554px;
+
 	@include flex-center;
+
 	flex-direction: column;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-		url(/src/assets/images/about-us/hero-about-us.png);
+	background-image: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)),
+		url("/src/assets/images/about-us/hero-about-us.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -15,18 +17,21 @@
 
 	&-title {
 		@include heading($size: 50px, $color: $color-white);
+
 		padding-bottom: 20px;
 		text-align: center;
 	}
 
 	&-text {
 		@include text($color: $colot-text-about);
+
 		text-align: center;
 	}
 
 	@include respond(sm) {
 		height: auto;
 		padding: 60px 10px;
+
 		&-title {
 			font-size: 32px;
 		}
@@ -41,6 +46,7 @@
 
 	&-wrapper {
 		@include container;
+
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 		gap: 40px;
@@ -60,11 +66,13 @@
 
 		h3 {
 			@include heading($size: 18px, $weight: 700);
+
 			margin-bottom: 10px;
 		}
 
 		p {
 			@include text($size: 15px, $color: $color-text);
+
 			max-width: 250px;
 		}
 
@@ -82,6 +90,7 @@
 
 	&-wrapper {
 		@include container;
+
 		display: grid;
 		grid-template-columns: 1fr 615px;
 		align-items: center;
@@ -96,11 +105,13 @@
 	&-text {
 		h2 {
 			@include heading($size: 32px, $weight: 700);
+
 			margin-bottom: 30px;
 		}
 
 		p {
 			@include text($size: 16px, $color: $color-text);
+
 			margin-bottom: 30px;
 		}
 	}
@@ -129,6 +140,7 @@
 
 		h2 {
 			@include heading($size: 50px, $weight: 900);
+
 			margin-bottom: 10px;
 		}
 
@@ -165,6 +177,7 @@
 
 		h3 {
 			@include heading($size: 22px, $weight: 700);
+
 			margin-bottom: 10px;
 		}
 

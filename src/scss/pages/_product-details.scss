@@ -91,6 +91,7 @@
 .product-info {
     .product-name {
         @include heading($size: 30px, $weight: 700);
+
         margin-bottom: 15px;
 
         @include respond(sm) {
@@ -135,6 +136,7 @@
 
         .old-price {
             @include text($color: $color-text, $size: 18px);
+
             text-decoration: line-through;
             margin-right: 12px;
         }
@@ -146,6 +148,7 @@
 
     .product-description {
         @include text;
+
         margin-bottom: 30px;
 
         p {
@@ -170,7 +173,9 @@
         .option-group {
             .option-label {
                 display: block;
+
                 @include text($weight: 600, $size: 14px, $color: $color-black);
+
                 margin-bottom: 8px;
             }
 
@@ -355,6 +360,7 @@
 
             h3 {
                 @include heading($size: 24px, $weight: 700);
+
                 margin-bottom: 20px;
 
                 @include respond(sm) {
@@ -364,6 +370,7 @@
 
             p {
                 @include text($color: $color-text, $size: 15px);
+
                 margin-bottom: 15px;
                 line-height: 1.8;
 
@@ -480,6 +487,7 @@
 
                     .review-author {
                         @include heading($size: 16px, $weight: 700);
+
                         margin: 0;
                     }
 
@@ -497,7 +505,7 @@
                         font-size: 16px;
 
                         &.empty {
-                            color: #ddd;
+                            color: #dddddd;
                         }
                     }
                 }
@@ -505,6 +513,7 @@
 
             .review-text {
                 @include text($color: $color-text, $size: 15px);
+
                 line-height: 1.7;
             }
         }
@@ -522,6 +531,7 @@
 
     .form-note {
         @include text($color: $color-text, $size: 14px);
+
         margin-bottom: 25px;
     }
 
@@ -530,7 +540,9 @@
 
         label {
             display: block;
+
             @include text($weight: 700, $size: 13px, $color: $color-black);
+
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -574,7 +586,7 @@
 
         .star-input {
             font-size: 28px;
-            color: #ddd;
+            color: #dddddd;
             cursor: pointer;
             transition: color 0.2s ease;
 
@@ -613,6 +625,7 @@
 
             span {
                 @include text($size: 14px, $color: $color-text);
+
                 line-height: 1.5;
             }
         }
@@ -632,6 +645,7 @@
 
     .section-title {
         @include heading($size: 32px, $weight: 700);
+
         text-align: center;
         margin-bottom: 40px;
 
@@ -662,14 +676,14 @@
         background-color: $color-white;
         border-radius: 8px;
         overflow: hidden;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 2px 12px rgb(0 0 0 / 8%);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         cursor: pointer;
         position: relative;
 
         &:hover {
             transform: translateY(-5px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 20px rgb(0 0 0 / 12%);
         }
 
         .sale-badge {
@@ -702,6 +716,7 @@
 
             .product-card-name {
                 @include heading($size: 16px, $weight: 600);
+
                 margin-bottom: 10px;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -766,6 +781,7 @@
         .benefit-text {
             h4 {
                 @include text($size: 14px, $weight: 600, $color: $color-black);
+
                 line-height: 1.6;
             }
         }

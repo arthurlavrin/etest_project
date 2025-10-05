@@ -20,6 +20,7 @@
 
 			h2 {
 				@include heading;
+
 				text-align: center;
 				margin-bottom: 10px;
 			}
@@ -53,7 +54,7 @@
 			cursor: pointer;
 
 			&:hover {
-				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+				box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
 				transform: translateY(-2px);
 			}
 
@@ -77,14 +78,17 @@
 
 			h3 {
 				@include heading($size: 18px, $weight: 700);
+
 				margin: 15px 0 10px;
 				// padding: 24px 55px 15px 56px;
 				min-height: 48px;
+
 				@include flex-center;
 			}
 
 			.price {
 				@include text($color: $color-black);
+
 				font-weight: 700;
 				margin-bottom: 15px;
 			}
@@ -94,6 +98,7 @@
 					$bg: $color-main,
 					$text-color: $color-white
 				);
+
 				width: 150px;
 			}
 		}
@@ -127,7 +132,7 @@
 			cursor: pointer;
 
 			&:hover {
-				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+				box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
 				transform: translateY(-2px);
 			}
 		}
@@ -182,6 +187,7 @@
 .top-best-list {
 	.top-best-title {
 		@include heading($weight: 700, $size: 17px);
+
 		margin-bottom: 23px;
 	}
 
@@ -206,6 +212,7 @@
 
 			.title {
 				@include text($color: $color-black, $size: 15px);
+
 				margin-bottom: 5px;
 			}
 
@@ -221,8 +228,8 @@
 		}
 
 		&:hover {
-			background: #fff;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			background: #ffffff;
+			box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
 			transform: translateY(-2px);
 		}
 

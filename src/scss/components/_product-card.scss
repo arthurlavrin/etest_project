@@ -6,7 +6,7 @@
     background-color: $color-white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 12px rgb(0 0 0 / 8%);
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
@@ -17,7 +17,7 @@
 
     &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 4px 20px rgb(0 0 0 / 12%);
     }
 
     &:active {
@@ -57,6 +57,7 @@
     // Product Name - direct h3
     h3 {
         @include heading($size: 18px, $weight: 700);
+
         margin: 15px 20px 10px;
         color: $color-black;
         line-height: 1.4;
@@ -66,6 +67,7 @@
     // Price - direct p.price
     .price {
         @include text($size: 17px, $weight: 400, $color: $color-text);
+
         margin: 0 20px 15px;
     }
 

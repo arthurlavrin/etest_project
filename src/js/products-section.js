@@ -1,7 +1,7 @@
 // --- products-toolbar ---
 function updateResultsToolbar(list, currentPage, perPage) {
-  const el = document.getElementById("results-count");
-  if (!el) return;
+  const el = document.getElementById('results-count');
+  if (!el) {return;}
   const total = list.length;
   const start = total === 0 ? 0 : (currentPage - 1) * perPage + 1;
   const end = total === 0 ? 0 : Math.min(currentPage * perPage, total);
@@ -19,16 +19,16 @@ let currentPage = 1;
 // --- Product Not Found Modal ---
 function showNotFoundModal() {
   const modal = document.getElementById('not-found-modal');
-  if (!modal) return;
-  
+  if (!modal) {return;}
+
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
 
 function hideNotFoundModal() {
   const modal = document.getElementById('not-found-modal');
-  if (!modal) return;
-  
+  if (!modal) {return;}
+
   modal.classList.remove('active');
   document.body.style.overflow = '';
 }
@@ -36,7 +36,7 @@ function hideNotFoundModal() {
 // Initialize modal close handlers
 function initNotFoundModal() {
   const modal = document.getElementById('not-found-modal');
-  if (!modal) return;
+  if (!modal) {return;}
 
   const closeBtn = modal.querySelector('.simple-modal-close');
   const okBtn = modal.querySelector('.simple-modal-btn');
@@ -54,28 +54,28 @@ function initNotFoundModal() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // Initialize modal
   initNotFoundModal();
   try {
     // JSON
-    const res = await fetch("/src/assets/data.json");
+    const res = await fetch('/src/assets/data.json');
     const { data } = await res.json();
     products = data;
     filteredProducts = [...products];
 
     // --- new-products + selected-products ---
-    if (document.getElementById("new-products")) {
-      renderSection("new-products", "New Products Arrival", "Duis vestibulum elit vel neque pharetra", "View Product", products, "New Products Arrival");
+    if (document.getElementById('new-products')) {
+      renderSection('new-products', 'New Products Arrival', 'Duis vestibulum elit vel neque pharetra', 'View Product', products, 'New Products Arrival');
     }
 
-    if (document.getElementById("selected-products")) {
-      renderSection("selected-products", "Selected Products", "Duis vestibulum elit vel neque pharetra", "Add To Cart", products, "Selected Products");
+    if (document.getElementById('selected-products')) {
+      renderSection('selected-products', 'Selected Products', 'Duis vestibulum elit vel neque pharetra', 'Add To Cart', products, 'Selected Products');
     }
 
     // --- catalog (all items + pagination) ---
-    catalogContainer = document.getElementById("catalog-products");
-    paginationEl = document.getElementById("pagination");
+    catalogContainer = document.getElementById('catalog-products');
+    paginationEl = document.getElementById('pagination');
 
     if (catalogContainer && paginationEl) {
       renderCatalogPage(currentPage);
@@ -86,30 +86,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderTopBestSets(products);
 
     // sorting + searching
-    const sortEl = document.getElementById("sortSelect");
-    const searchEl = document.getElementById("searchInput");
+    const sortEl = document.getElementById('sortSelect');
+    const searchEl = document.getElementById('searchInput');
 
-    sortEl?.addEventListener("change", applySearchAndSort);
-    searchEl?.addEventListener("input", debounce(applySearchAndSort, 250));
+    sortEl?.addEventListener('change', applySearchAndSort);
+    searchEl?.addEventListener('input', debounce(applySearchAndSort, 250));
   } catch (err) {
-    console.error("Loading error JSON:", err);
+    console.error('Loading error JSON:', err);
   }
 });
 
 // --- function for new + selected ---
 export function renderSection(containerId, title, subtitle, btnText, products, blockFilter = null) {
   const container = document.getElementById(containerId);
-  if (!container) return;
+  if (!container) {return;}
 
   const filtered = blockFilter ? products.filter((p) => p.blocks.includes(blockFilter)) : products;
 
-  const block = document.createElement("div");
-  block.className = "products-block";
+  const block = document.createElement('div');
+  block.className = 'products-block';
 
   const titleHTML = `
     <div class="products-block-title">
       <h2>${title}</h2>
-      ${subtitle ? `<p>${subtitle}</p>` : ""}
+      ${subtitle ? `<p>${subtitle}</p>` : ''}
     </div>
   `;
 
@@ -117,7 +117,7 @@ export function renderSection(containerId, title, subtitle, btnText, products, b
     .map(
       (item) => `
       <div class="product-card" data-product-id="${item.id}">
-        ${item.salesStatus ? '<div class="badge-sale">SALE</div>' : ""}
+        ${item.salesStatus ? '<div class="badge-sale">SALE</div>' : ''}
         <img src="${item.imageUrl}" alt="${item.name}">
         <h3>${item.name}</h3>
         <p class="price">$${item.price}</p>
@@ -125,11 +125,11 @@ export function renderSection(containerId, title, subtitle, btnText, products, b
       </div>
     `
     )
-    .join("");
+    .join('');
 
   block.innerHTML = titleHTML + `<div class="products-list">${cardsHTML}</div>`;
   container.appendChild(block);
-  
+
   // Add click handlers for Add to Cart buttons
   addCartHandlers(block, filtered);
 }
@@ -138,7 +138,7 @@ export function renderSection(containerId, title, subtitle, btnText, products, b
 function addCartHandlers(container, products) {
   const productCards = container.querySelectorAll('.product-card');
   const addToCartButtons = container.querySelectorAll('.add-to-cart-btn');
-  
+
   // Add click handler to product cards (navigate to product details)
   productCards.forEach(card => {
     card.addEventListener('click', function(e) {
@@ -146,22 +146,22 @@ function addCartHandlers(container, products) {
       if (e.target.closest('.add-to-cart-btn')) {
         return;
       }
-      
+
       const productId = this.dataset.productId;
       if (productId) {
         window.location.href = `/src/pages/product-details-template.html?id=${productId}`;
       }
     });
   });
-  
+
   // Add click handler to Add to Cart buttons
   addToCartButtons.forEach(btn => {
     btn.addEventListener('click', function(e) {
       e.stopPropagation(); // Prevent card click
-      
+
       const productId = this.dataset.productId;
       const product = products.find(p => p.id === productId);
-      
+
       if (product && window.CartHandler) {
         window.CartHandler.addToCart({
           id: product.id,
@@ -179,7 +179,7 @@ function addCartHandlers(container, products) {
 
 // --- catalog render ---
 function renderCatalogPage(page = 1, items = filteredProducts) {
-  catalogContainer.innerHTML = "";
+  catalogContainer.innerHTML = '';
 
   const start = (page - 1) * perPage;
   const end = start + perPage;
@@ -188,31 +188,31 @@ function renderCatalogPage(page = 1, items = filteredProducts) {
   if (pageProducts.length === 0) {
     // Show modal instead of inline message
     showNotFoundModal();
-    if (paginationEl) paginationEl.innerHTML = "";
+    if (paginationEl) {paginationEl.innerHTML = '';}
     updateResultsToolbar(items, 1, perPage);
     return;
   }
 
-  const block = document.createElement("div");
-  block.className = "products-block";
+  const block = document.createElement('div');
+  block.className = 'products-block';
   block.innerHTML = `
     <div class="products-list">
       ${pageProducts
-        .map(
-          (item) => `
+    .map(
+      (item) => `
         <div class="product-card" data-product-id="${item.id}">
-          ${item.salesStatus ? '<div class="badge-sale">SALE</div>' : ""}
+          ${item.salesStatus ? '<div class="badge-sale">SALE</div>' : ''}
           <img src="${item.imageUrl}" alt="${item.name}">
           <h3>${item.name}</h3>
           <p class="price">$${item.price}</p>
           <button class="btn add-to-cart-btn" data-product-id="${item.id}">Add To Cart</button>
         </div>
       `
-        )
-        .join("")}
+    )
+    .join('')}
     </div>`;
   catalogContainer.appendChild(block);
-  
+
   // Add click handlers for Add to Cart buttons
   addCartHandlers(block, pageProducts);
 
@@ -223,17 +223,17 @@ function renderCatalogPage(page = 1, items = filteredProducts) {
 function renderPagination(totalItems = filteredProducts.length) {
   const totalPages = Math.ceil(totalItems / perPage);
 
-  const prevHTML = currentPage > 1 ? `<button class="pagination__prev">Prev</button>` : "";
+  const prevHTML = currentPage > 1 ? '<button class="pagination__prev">Prev</button>' : '';
   const pagesHTML = Array.from({ length: totalPages }, (_, i) => {
     const page = i + 1;
     return `
       <li>
-        <button class="pagination__page ${page === currentPage ? "is-active" : ""}" data-page="${page}">
+        <button class="pagination__page ${page === currentPage ? 'is-active' : ''}" data-page="${page}">
           ${page}
         </button>
       </li>`;
-  }).join("");
-  const nextHTML = currentPage < totalPages ? `<button class="pagination__next">Next</button>` : "";
+  }).join('');
+  const nextHTML = currentPage < totalPages ? '<button class="pagination__next">Next</button>' : '';
 
   paginationEl.innerHTML = `
     <nav class="pagination">
@@ -244,27 +244,27 @@ function renderPagination(totalItems = filteredProducts.length) {
   `;
 
   // event
-  paginationEl.querySelectorAll(".pagination__page").forEach((btn) => {
-    btn.addEventListener("click", () => {
+  paginationEl.querySelectorAll('.pagination__page').forEach((btn) => {
+    btn.addEventListener('click', () => {
       currentPage = Number(btn.dataset.page);
       renderCatalogPage(currentPage);
       renderPagination();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
 
-  paginationEl.querySelector(".pagination__prev")?.addEventListener("click", () => {
+  paginationEl.querySelector('.pagination__prev')?.addEventListener('click', () => {
     currentPage--;
     renderCatalogPage(currentPage);
     renderPagination();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  paginationEl.querySelector(".pagination__next")?.addEventListener("click", () => {
+  paginationEl.querySelector('.pagination__next')?.addEventListener('click', () => {
     currentPage++;
     renderCatalogPage(currentPage);
     renderPagination();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
@@ -272,10 +272,10 @@ function renderPagination(totalItems = filteredProducts.length) {
 function sortArray(arr, value) {
   arr.sort((a, b) => {
     switch (value) {
-      case "price-asc": return a.price - b.price;
-      case "price-desc": return b.price - a.price;
-      case "popularity": return b.popularity - a.popularity;
-      case "rating": return b.rating - a.rating;
+      case 'price-asc': return a.price - b.price;
+      case 'price-desc': return b.price - a.price;
+      case 'popularity': return b.popularity - a.popularity;
+      case 'rating': return b.rating - a.rating;
       default: return 0;
     }
   });
@@ -290,33 +290,88 @@ function debounce(fn, delay = 250) {
 }
 
 function applySearchAndSort() {
-  const sortEl = document.getElementById("sortSelect");
-  const searchEl = document.getElementById("searchInput");
+  const sortEl = document.getElementById('sortSelect');
+  const searchEl = document.getElementById('searchInput');
 
-  const q = (searchEl?.value || "").trim().toLowerCase();
+  const q = (searchEl?.value || '').trim().toLowerCase();
   const words = q.split(/\s+/).filter(Boolean);
 
+  // Get active filters from CatalogFilters if available
+  const activeFilters = window.CatalogFilters?.getActiveFilters() || {
+    category: [],
+    color: [],
+    size: [],
+    salesStatus: []
+  };
+
   filteredProducts = products.filter((item) => {
+    // 1. Apply search filter
     const hay = `${item.name} ${item.category} ${item.color} ${item.size}`.toLowerCase();
-    return words.every((w) => hay.includes(w));
+    const matchesSearch = words.every((w) => hay.includes(w));
+    if (!matchesSearch) {return false;}
+
+    // 2. Apply category filter
+    if (activeFilters.category.length > 0) {
+      if (!activeFilters.category.includes(item.category)) {
+        return false;
+      }
+    }
+
+    // 3. Apply color filter
+    if (activeFilters.color.length > 0) {
+      if (!activeFilters.color.includes(item.color)) {
+        return false;
+      }
+    }
+
+    // 4. Apply size filter
+    if (activeFilters.size.length > 0) {
+      // Handle sizes that might be comma-separated (e.g., "S, M, XL")
+      const itemSizes = item.size.includes(',')
+        ? item.size.split(',').map(s => s.trim())
+        : [item.size];
+
+      const hasMatchingSize = activeFilters.size.some(filterSize =>
+        itemSizes.includes(filterSize)
+      );
+
+      if (!hasMatchingSize) {
+        return false;
+      }
+    }
+
+    // 5. Apply sales status filter
+    if (activeFilters.salesStatus.length > 0) {
+      const itemSalesStatus = item.salesStatus.toString();
+      if (!activeFilters.salesStatus.includes(itemSalesStatus)) {
+        return false;
+      }
+    }
+
+    return true;
   });
 
-  sortArray(filteredProducts, sortEl?.value || "");
+  sortArray(filteredProducts, sortEl?.value || '');
 
   currentPage = 1;
   renderCatalogPage(currentPage);
   renderPagination(filteredProducts.length);
 }
 
+// Listen for filter changes from catalog-page.js
+document.addEventListener('filtersChanged', () => {
+  applySearchAndSort();
+});
+
 // --- asidebar (Top Best Sets) ---
 function renderTopBestSets(products) {
-  const container = document.getElementById("top-best-sets");
-  if (!container) return;
+  const container = document.getElementById('top-best-sets');
+  if (!container) {return;}
 
-  const filtered = products.filter((p) => p.blocks.includes("Top Best Sets"));
+  const filtered = products.filter((p) => p.blocks.includes('Top Best Sets'));
 
-  const block = document.createElement("div");
-  block.className = "top-best-list";
+  const block = document.createElement('div');
+  block.className = 'top-best-list';
 
   const itemsHTML = filtered
     .map(
@@ -331,7 +386,7 @@ function renderTopBestSets(products) {
       </div>
     `
     )
-    .join("");
+    .join('');
 
   block.innerHTML = `<h3 class="top-best-title">Top Best Sets</h3>${itemsHTML}`;
   container.appendChild(block);
@@ -355,13 +410,13 @@ function renderStars(rating) {
   const emptyStars = 5 - fullStars - halfStar;
 
   return (
-    "★".repeat(fullStars) +
-    (halfStar ? "☆" : "") +
-    "☆".repeat(emptyStars)
+    '★'.repeat(fullStars) +
+    (halfStar ? '☆' : '') +
+    '☆'.repeat(emptyStars)
   )
-    .split("")
+    .split('')
     .map((star) => `<span class="star">${star}</span>`)
-    .join("");
+    .join('');
 }
 
 // Export renderStars for use in other modules

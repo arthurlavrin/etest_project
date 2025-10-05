@@ -4,16 +4,19 @@
 // --- hero-contact section ---
 .hero-contact {
 	height: 554px;
+
 	@include flex-center;
+
 	flex-direction: column;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-		url(/src/assets/images/contact/hero-contact.png);
+	background-image: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)),
+		url("/src/assets/images/contact/hero-contact.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
 
 	&-title {
 		@include heading($size: 50px, $color: $color-white);
+
 		padding-bottom: 20px;
 		text-align: center;
 
@@ -24,6 +27,7 @@
 
 	&-text {
 		@include text($color: $colot-text-about);
+
 		text-align: center;
 
 		@include respond(sm) {
@@ -39,6 +43,7 @@
 
 	&-wrapper {
 		@include container;
+
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 40px;
@@ -68,6 +73,7 @@
 
 		h3 {
 			@include heading($size: 18px, $weight: 700);
+
 			margin-bottom: 10px;
 		}
 
@@ -87,6 +93,7 @@
 
 	&-wrapper {
 		@include container;
+
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 40px;
@@ -113,6 +120,7 @@
 
 		h2 {
 			@include heading($size: 25px, $weight: 700);
+
 			margin-bottom: 30px;
 
 			@include respond(sm) {
@@ -122,6 +130,7 @@
 
 		p {
 			@include text($size: 17px, $color: $color-text);
+
 			margin-bottom: 40px;
 
 			@include respond(sm) {
@@ -129,12 +138,50 @@
 			}
 		}
 
+		.form-message {
+			padding: 15px 20px;
+			margin-bottom: 20px;
+			border-radius: 4px;
+			font-family: var(--font-family);
+			font-size: 15px;
+			font-weight: 600;
+			text-align: center;
+
+			&.success {
+				background-color: #d4edda;
+				color: #155724;
+				border: 2px solid #c3e6cb;
+			}
+
+			&.error {
+				background-color: #f8d7da;
+				color: #721c24;
+				border: 2px solid #f5c6cb;
+			}
+		}
+
 		form {
 			display: flex;
 			flex-direction: column;
 
+			.form-field {
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 20px;
+
+				.error-message {
+					display: none;
+					color: #dc3545;
+					font-family: var(--font-family);
+					font-size: 13px;
+					margin-top: 5px;
+					font-weight: 500;
+				}
+			}
+
 			label {
 				@include text($color: $color-black, $weight: 700, $line: none);
+
 				margin-bottom: 8px;
 				text-align: left;
 
@@ -146,14 +193,24 @@
 			input,
 			textarea {
 				padding: 12px 15px;
-				margin-bottom: 37px;
 				border: 2px solid $color-main;
 				font-size: 18px;
 				font-weight: 700;
 				outline: none;
+				transition: border-color 0.3s ease;
 
 				&:focus {
 					border-color: darken($color-main, 10%);
+				}
+
+				&.error {
+					border-color: #dc3545;
+					background-color: #fff5f5;
+				}
+
+				&.success {
+					border-color: #28a745;
+					background-color: #f0fff4;
 				}
 
 				@include respond(sm) {

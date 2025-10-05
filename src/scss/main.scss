@@ -1,12 +1,12 @@
 @use "./base/reset";
 @use "./abstracts/variables" as *;
 @use "./abstracts/mixins" as *;
-@use "layouts/header.scss";
-@use "layouts/footer.scss";
-@use "components/buttons.scss";
-@use "components/auth-modal.scss";
+@use "layouts/header";
+@use "layouts/footer";
+@use "components/buttons";
+@use "components/auth-modal";
 @use "pages/catalog";
-@use "components/products-section.scss";
+@use "components/products-section";
 @use "pages/about";
 @use "pages/contact";
 @use "pages/product-details";
@@ -32,7 +32,7 @@
 	font-family: var(--font-family);
 	font-weight: 600;
 	font-size: 14px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
 	z-index: 10000;
 	opacity: 0;
 	transform: translateY(20px);
@@ -67,7 +67,7 @@
 	&-overlay {
 		position: absolute;
 		inset: 0;
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: rgb(0 0 0 / 50%);
 		backdrop-filter: blur(4px);
 	}
 
@@ -79,17 +79,19 @@
 		max-width: 400px;
 		width: 90%;
 		text-align: center;
-		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 10px 40px rgb(0 0 0 / 30%);
 		z-index: 1;
 		animation: slideUp 0.3s ease;
 
 		h3 {
 			@include heading($size: 24px, $weight: 700, $color: $color-black);
+
 			margin-bottom: 15px;
 		}
 
 		p {
 			@include text($color: $color-text, $size: 16px);
+
 			margin-bottom: 25px;
 			line-height: 1.6;
 		}
@@ -140,6 +142,7 @@
 		opacity: 0;
 		transform: translateY(20px);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0);
@@ -157,6 +160,7 @@
 	background-color: #e7e8e9;
 	position: relative;
 	z-index: 1;
+
 	@include flex-center;
 
 	&::after {
@@ -187,6 +191,7 @@
 
 		&-text {
 			@include text;
+
 			margin-bottom: 30px;
 		}
 	}
@@ -195,6 +200,7 @@
 	@include respond(lg) {
 		&-content {
 			padding: 100px 10px 200px; 
+
 			h1 {
 				font-size: 42px;
 			}
@@ -229,6 +235,7 @@
 
 		&-content {
 			text-align: center; 
+
 			h1 {
 				font-size: 28px;
 			}
@@ -240,6 +247,7 @@
 
 .promo {
 	@include flex-between;
+
 	background-color: $color-white;
 	box-shadow: $box-shadow;
 	position: relative;
@@ -272,6 +280,7 @@
 
 			&-text {
 				@include text;
+
 				margin-top: 30px;
 			}
 		}
@@ -281,10 +290,11 @@
 		width: 646px;
 		height: 566px;
 		background-image: linear-gradient(
-				rgba(0, 0, 0, 0.4),
-				rgba(0, 0, 0, 0.4)
+				rgb(0 0 0 / 40%),
+				rgb(0 0 0 / 40%)
 			),
-			url(/src/assets/images/homepage/bags-discount.png);
+			url("/src/assets/images/homepage/bags-discount.png");
+
 		@include background;
 
 		&-items {
@@ -294,11 +304,13 @@
 
 			&-title {
 				@include heading($color: $color-white);
+
 				margin-bottom: 30px;
 			}
 
 			&-text {
 				@include text($color: $color-white);
+
 				margin-bottom: 30px;
 			}
 		}
@@ -382,6 +394,7 @@
 
 	h3 {
 		@include heading($size: 20px, $weight: 700);
+
 		margin-bottom: 7px;
 	}
 
@@ -405,6 +418,7 @@
 
 		&-heading {
 			@include heading;
+
 			text-align: center;
 			margin-bottom: 10px;
 		}
@@ -416,6 +430,7 @@
 
 	&-wrapper {
 		@include container;
+
 		position: relative;
 		overflow: hidden;
 	}
@@ -445,6 +460,7 @@
             }
         }
     }
+
 	.product-card {
         position: relative;
         width: 296px;
@@ -473,7 +489,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+            background: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%));
             z-index: 1;
         }
 
@@ -491,17 +507,19 @@
 					$size: 19px,
 					$color: $color-white
 				);
+
                 margin-bottom: 20px;
 			}
 
             &-text {
                 @include text($color: $color-white);
+
                 margin-bottom: 39px;
             }
 		}
 
 		&:hover {
-			box-shadow:  0 10px 25px rgba(0, 0, 0, 0.25);
+			box-shadow:  0 10px 25px rgb(0 0 0 / 25%);
 
 			img {
 				transform: scale(1.30);
@@ -523,6 +541,7 @@
 		&.prev {
 			left: 10px;
 		}
+
 		&.next {
 			right: 10px;
 		}
@@ -550,9 +569,11 @@
 	@include respond(md) {
 		margin: 60px 30px;
 		padding: 0 10px;
+
 		&-track {
 
 		}
+
 		.product-card {
 			width: 250px;
 			height: 400px;
@@ -593,11 +614,12 @@
 
 .content-banner {
 	@include flex-between;
+
 	height: 407px;
 	background-image: linear-gradient(
-			rgba(0, 0, 0, 0.4),
-			rgba(0, 0, 0, 0.4)
-			), url(/src/assets/images/homepage/banner.png);
+			rgb(0 0 0 / 40%),
+			rgb(0 0 0 / 40%)
+			), url("/src/assets/images/homepage/banner.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -614,6 +636,7 @@
 
 		&-text {
 			@include text($size: 20px, $color: $color-white);
+
 			margin-top: -20px;
 			margin-bottom: 96px;
 		}
@@ -623,14 +646,18 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
+
 		&-title {
 			@include heading($color: $color-white);
+
 			margin-bottom: 30px;
 		}
 
 		&-text {
 			max-width: 394px;
+
 			@include text($color: $color-white);
+
 			margin-bottom: 30px;
 		}
 	}
@@ -670,9 +697,11 @@
 
 		&-left {
 			margin: 0;
+
 			&-title {
 				font-size: 140px;
 			}
+
 			&-text {
 				margin-bottom: 40px;
 				font-size: 18px;
@@ -681,6 +710,7 @@
 
 		&-right {
 			align-items: center;
+
 			&-text {
 				max-width: 80%;
 			}
@@ -695,9 +725,11 @@
 
 		&-left {
 			margin: 0;
+
 			&-title {
 				font-size: 80px;
 			}
+
 			&-text {
 				font-size: 16px;
 				margin-bottom: 20px;
@@ -706,10 +738,12 @@
 
 		&-right {
 			align-items: center;
+
 			&-title {
 				font-size: 22px;
 				margin-bottom: 15px;
 			}
+
 			&-text {
 				max-width: 100%;
 				font-size: 15px;
@@ -728,12 +762,14 @@
 
 	&-title {
 		@include heading;
+
 		text-align: center;
 		margin-bottom: 10px;
 	}
 
 	&-parag {
 		@include text;
+
 		text-align: center;
 		margin-bottom: 60px;
 	}
@@ -746,7 +782,9 @@
 	&-profile {
 		background-color: $color-white;
 		box-shadow: $box-shadow;
+
 		@include flex-center;
+
 		flex-direction: column;
 		margin-right: $gap-small;
 		padding: 44px 42px 47px 40px;
@@ -763,6 +801,7 @@
 
 		&-desc {
 			@include text($color: $color-black);
+
 			margin-bottom: 25px;
 			text-align: center;
 		}
@@ -779,6 +818,7 @@
 		&-profile {
 			max-width: 300px;
 			padding: 40px 35px;
+
 			img {
 				width: 90px;
 				height: 90px;
@@ -815,9 +855,11 @@
 	@include respond(sm) {
 		padding: 0 10px;
 		margin: 60px 0 80px;
+
 		&-title {
 			font-size: 35px;
 		}
+
 		&-parag {
 			margin-bottom: 30px;
 		}
