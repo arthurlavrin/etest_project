@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Product Details - Best Shop</title>
+		<link rel="stylesheet" href="/dist/css/main.css" />
+		<link rel="shortcut icon" href="/src/assets/images/icons/favicon.png" type="image/x-icon" />
+		<script src="../js/layout.js" defer></script>
+		<script src="../js/scroll-button.js" defer></script>
+		<script src="../js/product-details.js" type="module" defer></script>
+		<script src="../js/auth-modal.js" defer></script>
+	</head>
+	<body>
+		<!-- header -->
+		<div id="header"></div>
+		<!-- // header -->
+
+		<!-- auth modal -->
+		<div id="auth-modal"></div>
+		<!-- // auth modal -->
+
+		<!-- scroll-button -->
+		<a id="scroll-button" aria-label="Scroll to top"></a>
+		<!-- // scroll-button -->
+
+		<main>
+			<div class="product-details wrapper">
+				<div class="product-details-container">
+					<!-- Left: Image Gallery -->
+					<div class="product-gallery">
+						<div class="gallery-main">
+							<img id="main-image" src="/src/assets/images/catalog/image1.png" alt="Product Image" />
+						</div>
+						<div class="gallery-thumbnails">
+							<img class="thumbnail active" src="/src/assets/images/catalog/image1.png" alt="Thumbnail 1" data-index="0" />
+							<img class="thumbnail" src="/src/assets/images/catalog/image2.png" alt="Thumbnail 2" data-index="1" />
+							<img class="thumbnail" src="/src/assets/images/catalog/image3.png" alt="Thumbnail 3" data-index="2" />
+							<img class="thumbnail" src="/src/assets/images/catalog/image4.png" alt="Thumbnail 4" data-index="3" />
+						</div>
+					</div>
+
+					<!-- Right: Product Info -->
+					<div class="product-info">
+						<h1 id="product-name" class="product-name">Global Explorer Max Comfort Suitcase Pro</h1>
+						
+						<div class="product-meta">
+							<div class="product-rating">
+								<div id="product-stars" class="rating-stars"></div>
+								<span id="product-rating-value" class="rating-value">(4.5)</span>
+							</div>
+							<span class="product-sku">SKU: <span id="product-sku">SU001</span></span>
+						</div>
+
+						<div class="product-price">
+							<span id="product-old-price" class="old-price">$350</span>
+							<span id="product-price" class="current-price">$250</span>
+						</div>
+
+						<div id="product-description" class="product-description">
+							<p>The new Global Explorer Max Comfort Suitcase Pro is a bold reimagining of most demanded, designed to elevate every journey. Made with a Next-Gen durable frame, and featuring innovative design. Inside, the modern compartments are designed better organize your belongings, ensuring effortless mobility while making a statement wherever your adventures take you.</p>
+							<p>The responsive handle and Globetrotter Spinner wheels in-snow effortless mobility, while making a statement wherever your adventures take you design, inside, the modern compartments are designed better organize your belongings, ensuring effortless packing and maximum flexibility.</p>
+						</div>
+
+						<!-- Size Selection -->
+						<div class="product-options">
+							<div class="option-group">
+								<label class="option-label">Size</label>
+								<select id="size-select" class="option-select">
+									<option value="">Choose option</option>
+									<option value="S">S</option>
+									<option value="M">M</option>
+									<option value="L">L</option>
+									<option value="XL">XL</option>
+								</select>
+							</div>
+
+							<!-- Color Selection -->
+							<div class="option-group">
+								<label class="option-label">Color</label>
+								<select id="color-select" class="option-select">
+									<option value="">Choose option</option>
+									<option value="red">Red</option>
+									<option value="blue">Blue</option>
+									<option value="green">Green</option>
+									<option value="black">Black</option>
+									<option value="grey">Grey</option>
+									<option value="yellow">Yellow</option>
+									<option value="pink">Pink</option>
+								</select>
+							</div>
+
+							<!-- Category -->
+							<div class="option-group">
+								<label class="option-label">Category</label>
+								<select id="category-select" class="option-select">
+									<option value="">Choose option</option>
+									<option value="carry-ons">Carry-ons</option>
+									<option value="suitcases">Suitcases</option>
+									<option value="luggage sets">Luggage Sets</option>
+									<option value="kids' luggage">Kids' Luggage</option>
+								</select>
+							</div>
+						</div>
+
+						<!-- Quantity and Add to Cart -->
+						<div class="product-actions">
+							<div class="quantity-selector">
+								<button id="qty-minus" class="qty-btn" aria-label="Decrease quantity">-</button>
+								<input type="number" id="quantity" class="qty-input" value="1" min="1" readonly />
+								<button id="qty-plus" class="qty-btn" aria-label="Increase quantity">+</button>
+							</div>
+							<button id="add-to-cart-btn" class="btn add-to-cart-btn">Add To Cart</button>
+						</div>
+
+						<!-- Payment Methods -->
+						<div class="payment-methods">
+							<span class="payment-label">Payment:</span>
+							<div class="payment-icons">
+								<span class="payment-icon">VISA</span>
+								<span class="payment-icon">Mastercard</span>
+								<span class="payment-icon">Discover</span>
+								<span class="payment-icon">PayPal</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Tabs Section -->
+				<div class="product-tabs">
+					<div class="tabs-header">
+						<button class="tab-btn active" data-tab="details">DETAILS</button>
+						<button class="tab-btn" data-tab="reviews">REVIEWS</button>
+						<button class="tab-btn" data-tab="shipping">SHIPPING POLICY</button>
+					</div>
+
+					<div class="tabs-content">
+						<!-- Details Tab -->
+						<div id="details-tab" class="tab-pane active">
+							<h3>Product Details</h3>
+							<p>Vestibulum commodo sapien non elit porttitor, vitae volutpat nibh mollis. Nulla porta risus id neque tempor, in efficitur dolor vulputate. Donec accumsan laoreet lectus quis. Lorem et pretium consequat, ultrices facilisis ex. Vestibulum non mollis nisi. Proin et nisi vel arcu scelerisque luctus. Curabitur at placerat elit, sit armet sodales risus. Pellentesque interdum velit at sem consectetur, vel luctus magna scelerisque.</p>
+							<p>Proin rhoncus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at metus luctus, vel facilisis ex. Lorem ipsum vulputate arcu odio, ac facilisis diam accumsan ut. Ut imperdiet et leo in vulputate. Curabitur at placerat elit, sit amet sodales risus. Pellentesque interdum velit</p>
+						</div>
+
+						<!-- Reviews Tab -->
+						<div id="reviews-tab" class="tab-pane">
+							<div class="reviews-header">
+								<h3>1 review for <span id="review-product-name">Global Explorer Max Comfort Suitcase Pro</span></h3>
+								<button class="btn-link add-review-btn">Add Review</button>
+							</div>
+
+							<div class="reviews-list">
+								<div class="review-item">
+									<img src="/src/assets/images/homepage/avatar-LillianBennett.png" alt="Reviewer" class="review-avatar" />
+									<div class="review-content">
+										<div class="review-header">
+											<div class="review-author-info">
+												<h4 class="review-author">Ella Harper</h4>
+												<span class="review-date">/ June 11, 2025</span>
+											</div>
+											<div class="review-rating">
+												<span class="star">★</span>
+												<span class="star">★</span>
+												<span class="star">★</span>
+												<span class="star">★</span>
+												<span class="star empty">☆</span>
+											</div>
+										</div>
+										<p class="review-text">Proin iaculis nibh vitae lectus mollis bibendum. Quisque varius eget urna sit amet luctus. Suspendisse potenti curabitur ac placerat est, sit amet sodales risus.</p>
+									</div>
+								</div>
+							</div>
+
+							<!-- Add Review Form -->
+							<div class="add-review-form" id="add-review-form">
+								<h3>Add Review</h3>
+								<p class="form-note">Your email address won't be shared with anybody. Required fields have the symbol *</p>
+
+								<form id="reviewForm">
+									<div class="form-group">
+										<label>RATE PRODUCT <span class="required">*</span></label>
+										<div class="star-rating-input">
+											<span class="star-input" data-rating="1">☆</span>
+											<span class="star-input" data-rating="2">☆</span>
+											<span class="star-input" data-rating="3">☆</span>
+											<span class="star-input" data-rating="4">☆</span>
+											<span class="star-input" data-rating="5">☆</span>
+											<input type="hidden" id="rating-input" name="rating" required />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="review-text">Your Review <span class="required">*</span></label>
+										<textarea id="review-text" name="reviewText" rows="5" placeholder="Your Review*" required></textarea>
+									</div>
+
+									<div class="form-row">
+										<div class="form-group">
+											<label for="reviewer-name">Your Name <span class="required">*</span></label>
+											<input type="text" id="reviewer-name" name="name" placeholder="Your Name*" required />
+										</div>
+										<div class="form-group">
+											<label for="reviewer-email">Your Email <span class="required">*</span></label>
+											<input type="email" id="reviewer-email" name="email" placeholder="Your Email*" required />
+										</div>
+									</div>
+
+									<div class="form-group checkbox-group">
+										<label class="checkbox-wrapper">
+											<input type="checkbox" name="saveInfo" />
+											<span>Save my name, email, and website in this browser for when I leave another comment.</span>
+										</label>
+									</div>
+
+									<button type="submit" class="btn submit-review-btn">SUBMIT</button>
+								</form>
+							</div>
+						</div>
+
+						<!-- Shipping Policy Tab -->
+						<div id="shipping-tab" class="tab-pane">
+							<h3>Shipping Policy</h3>
+							<p>Vestibulum commodo sapien non elit porttitor, vitae volutpat nibh mollis. Nulla porta risus id neque tempor, in efficitur dolor vulputate. Donec accumsan laoreet lectus quis. Lorem et pretium consequat, ultrices facilisis ex. Vestibulum non mollis nisi. Proin et nisi vel arcu scelerisque luctus. Curabitur at placerat elit, sit armet sodales risus. Pellentesque interdum velit at sem consectetur, vel luctus magna scelerisque.</p>
+							<p>Proin rhoncus risus turpis, pretium sit amet magna non, molestie ultricies enim. Nullam pulvinar felis at metus luctus, vel facilisis ex. Lorem ipsum vulputate arcu odio, ac facilisis diam accumsan ut. Ut imperdiet et leo in vulputate.</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- You May Also Like Section -->
+				<section class="you-may-like">
+					<h2 class="section-title">You May Also Like</h2>
+					<div id="related-products" class="related-products-grid"></div>
+				</section>
+
+				<!-- Our Benefits Section -->
+				<section class="product-benefits wrapper">
+					<div class="benefit-item">
+						<div class="benefit-icon">🚚</div>
+						<div class="benefit-text">
+							<h4>VAT-and duties-have always been included</h4>
+						</div>
+					</div>
+					<div class="benefit-item">
+						<div class="benefit-icon">📦</div>
+						<div class="benefit-text">
+							<h4>Show me ways- Made to orders and sold out</h4>
+						</div>
+					</div>
+					<div class="benefit-item">
+						<div class="benefit-icon">💎</div>
+						<div class="benefit-text">
+							<h4>Blockchain feature id writes terms praxis the founding</h4>
+						</div>
+					</div>
+					<div class="benefit-item">
+						<div class="benefit-icon">🚫</div>
+						<div class="benefit-text">
+							<h4>Your packages don't does not have auto ordered for</h4>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<!-- footer -->
+		<div id="footer"></div>
+		<!-- // footer -->
+	</body>
+</html>

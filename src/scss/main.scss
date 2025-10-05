@@ -9,6 +9,8 @@
 @use "components/products-section.scss";
 @use "pages/about";
 @use "pages/contact";
+@use "pages/product-details";
+@use "pages/cart";
 
 // --- media queries changes for scrolling button
 
@@ -17,6 +19,39 @@
     	display: none;
 	}
 }
+
+
+// --- Cart Toast Notification ---
+.cart-toast {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	background-color: $color-main;
+	color: $color-white;
+	padding: 15px 25px;
+	border-radius: 6px;
+	font-family: var(--font-family);
+	font-weight: 600;
+	font-size: 14px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	z-index: 10000;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: all 0.3s ease;
+
+	&.show {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	@include respond(sm) {
+		bottom: 20px;
+		right: 20px;
+		left: 20px;
+		text-align: center;
+	}
+}
+
 // ----
 
 .wrapper {

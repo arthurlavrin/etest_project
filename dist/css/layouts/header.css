@@ -82,20 +82,41 @@
 
 .icons {
   flex: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 .icons-btn {
-  margin-right: 15px;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
-.icons-btn:last-child {
-  margin-right: 0;
-}
-
-.icons img {
+.icons-btn img {
   display: inline-block;
   transition: transform 0.3s ease;
 }
-.icons img:hover {
+.icons-btn img:hover {
   transform: translate(0, -3px);
+}
+.icons .cart-counter {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #b92770;
+  color: #fff;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 11px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  line-height: 1;
 }
 
 .header-bottom {

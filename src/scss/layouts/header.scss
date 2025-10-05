@@ -76,21 +76,40 @@
 
 .icons {
     flex: none;
-
-    // adaptive
-    
+    display: flex;
+    align-items: center;
+    gap: 15px;
 
     &-btn {
-        margin-right: 15px;
+        position: relative;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
 
-        &:last-child {
-            margin-right: 0;
+        img {
+            @include hover-move(0, -3px);
         }
     }
-}
 
-.icons img {
-    @include hover-move(0, -3px); 
+    .cart-counter {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: $color-main;
+        color: $color-white;
+        font-family: var(--font-family);
+        font-weight: 700;
+        font-size: 11px;
+        min-width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 5px;
+        line-height: 1;
+    }
 }
 
 // header-bottom
