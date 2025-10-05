@@ -51,6 +51,101 @@
 	}
 }
 
+// --- simple modal (product not found) ---
+.simple-modal {
+	display: none;
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	align-items: center;
+	justify-content: center;
+
+	&.active {
+		display: flex;
+	}
+
+	&-overlay {
+		position: absolute;
+		inset: 0;
+		background-color: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(4px);
+	}
+
+	&-content {
+		position: relative;
+		background-color: $color-white;
+		padding: 40px;
+		border-radius: 8px;
+		max-width: 400px;
+		width: 90%;
+		text-align: center;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+		z-index: 1;
+		animation: slideUp 0.3s ease;
+
+		h3 {
+			@include heading($size: 24px, $weight: 700, $color: $color-black);
+			margin-bottom: 15px;
+		}
+
+		p {
+			@include text($color: $color-text, $size: 16px);
+			margin-bottom: 25px;
+			line-height: 1.6;
+		}
+	}
+
+	&-close {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		background: none;
+		border: none;
+		font-size: 28px;
+		color: $color-text;
+		cursor: pointer;
+		line-height: 1;
+		padding: 0;
+		width: 30px;
+		height: 30px;
+		transition: color 0.3s ease;
+
+		&:hover {
+			color: $color-main;
+		}
+	}
+
+	&-btn {
+		max-width: 150px;
+		margin: 0 auto;
+	}
+
+	@include respond(sm) {
+		&-content {
+			padding: 30px 20px;
+			
+			h3 {
+				font-size: 20px;
+			}
+
+			p {
+				font-size: 15px;
+			}
+		}
+	}
+}
+
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 // ----
 
 .wrapper {

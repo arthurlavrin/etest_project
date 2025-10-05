@@ -2334,8 +2334,21 @@ body.modal-open {
   }
 }
 
-.tab-pane {
-  display: flex;
+#reviews-tab.active {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+@media (max-width: 1440px) {
+  #reviews-tab.active {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.reviews-content-left {
+  width: 100%;
 }
 
 .reviews-header {
@@ -3185,6 +3198,95 @@ body.modal-open {
   }
 }
 
+.simple-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+.simple-modal.active {
+  display: flex;
+}
+.simple-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+.simple-modal-content {
+  position: relative;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  animation: slideUp 0.3s ease;
+}
+.simple-modal-content h3 {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 24px;
+  color: #000;
+  margin-bottom: 15px;
+}
+.simple-modal-content p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #504e4a;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+.simple-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #504e4a;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  transition: color 0.3s ease;
+}
+.simple-modal-close:hover {
+  color: #b92770;
+}
+.simple-modal-btn {
+  max-width: 150px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .simple-modal-content {
+    padding: 30px 20px;
+  }
+  .simple-modal-content h3 {
+    font-size: 20px;
+  }
+  .simple-modal-content p {
+    font-size: 15px;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .wrapper {
   max-width: 1300px;
   width: 100%;

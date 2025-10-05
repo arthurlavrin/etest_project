@@ -16,7 +16,47 @@ let paginationEl;
 const perPage = 12;
 let currentPage = 1;
 
+// --- Product Not Found Modal ---
+function showNotFoundModal() {
+  const modal = document.getElementById('not-found-modal');
+  if (!modal) return;
+  
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function hideNotFoundModal() {
+  const modal = document.getElementById('not-found-modal');
+  if (!modal) return;
+  
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Initialize modal close handlers
+function initNotFoundModal() {
+  const modal = document.getElementById('not-found-modal');
+  if (!modal) return;
+
+  const closeBtn = modal.querySelector('.simple-modal-close');
+  const okBtn = modal.querySelector('.simple-modal-btn');
+  const overlay = modal.querySelector('.simple-modal-overlay');
+
+  closeBtn?.addEventListener('click', hideNotFoundModal);
+  okBtn?.addEventListener('click', hideNotFoundModal);
+  overlay?.addEventListener('click', hideNotFoundModal);
+
+  // Close on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      hideNotFoundModal();
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
+  // Initialize modal
+  initNotFoundModal();
   try {
     // JSON
     const res = await fetch("/src/assets/data.json");
@@ -146,7 +186,8 @@ function renderCatalogPage(page = 1, items = filteredProducts) {
   const pageProducts = items.slice(start, end);
 
   if (pageProducts.length === 0) {
-    catalogContainer.innerHTML = `<p class="empty">No products found</p>`;
+    // Show modal instead of inline message
+    showNotFoundModal();
     if (paginationEl) paginationEl.innerHTML = "";
     updateResultsToolbar(items, 1, perPage);
     return;

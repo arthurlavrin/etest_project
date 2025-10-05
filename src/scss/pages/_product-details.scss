@@ -381,8 +381,22 @@
 }
 
 // Reviews Section
-.tab-pane {
-    display: flex;
+#reviews-tab {
+    &.active {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+
+        @include respond(lg) {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+    }
+}
+
+.reviews-content-left {
+    width: 100%;
 }
 
 .reviews-header {
