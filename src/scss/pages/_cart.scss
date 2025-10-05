@@ -4,7 +4,7 @@
 // Cart Hero Section
 .cart-hero {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url('/src/assets/images/contact/hero-contact.png') no-repeat center;
+        url('/src/assets/images/product-card/cart-hero.png') no-repeat center;
     background-size: cover;
     padding: 100px 0;
     text-align: center;
@@ -33,9 +33,12 @@
     display: grid;
     grid-template-columns: 1fr 400px;
     gap: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
     grid-template-areas:
-        "table summary"
-        "actions summary";
+        "table table"
+        " actions summary"
+        " none summary";
 
     @include respond(lg) {
         grid-template-columns: 1fr 350px;
@@ -112,7 +115,6 @@
         width: 80px;
         height: 80px;
         object-fit: cover;
-        border-radius: 6px;
 
         @include respond(sm) {
             width: 60px;
@@ -151,7 +153,6 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -216,7 +217,6 @@
         tbody tr {
             margin-bottom: 20px;
             border: 1px solid $color-border;
-            border-radius: 8px;
             padding: 20px;
         }
 
@@ -238,10 +238,6 @@
                 padding-left: 0 !important;
                 padding-right: 0 !important;
             }
-        }
-
-        .cart-item-image {
-            margin-right: auto;
         }
 
         .cart-item-name {
@@ -301,7 +297,6 @@
     &-content {
         background-color: #3d3d3d;
         padding: 30px;
-        border-radius: 8px;
     }
 
     .summary-row {

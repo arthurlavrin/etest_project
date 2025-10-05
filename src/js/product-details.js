@@ -1,5 +1,5 @@
 // Product Details Page
-import { renderStars } from "./products-section.js";
+import { renderStars, renderSection } from "./products-section.js";
 
 (function () {
     let currentProduct = null;
@@ -186,110 +186,52 @@ import { renderStars } from "./products-section.js";
                 category: category
             };
 
-            // Get existing cart or create new one
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            // Check if item already exists with same attributes
-            const existingItemIndex = cart.findIndex(item => 
-                item.id === cartItem.id && 
-                item.size === cartItem.size && 
-                item.color === cartItem.color
-            );
-
-            if (existingItemIndex !== -1) {
-                // Update quantity
-                cart[existingItemIndex].quantity += cartItem.quantity;
+            // Use CartHandler if available
+            if (window.CartHandler) {
+                window.CartHandler.addToCart(cartItem);
             } else {
-                // Add new item
-                cart.push(cartItem);
+                // Fallback: manual localStorage management
+                console.warn('CartHandler not available, using fallback');
+                
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                const existingItemIndex = cart.findIndex(item => 
+                    item.id === cartItem.id && 
+                    item.size === cartItem.size && 
+                    item.color === cartItem.color
+                );
+
+                if (existingItemIndex !== -1) {
+                    cart[existingItemIndex].quantity += cartItem.quantity;
+                } else {
+                    cart.push(cartItem);
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`${cartItem.name} added to cart!`);
             }
-
-            // Save to localStorage
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            // Update cart counter (if exists)
-            updateCartCounter(cart);
-
-            // Show success message
-            alert(`${cartItem.name} added to cart!`);
 
             // Reset quantity to 1
             document.getElementById('quantity').value = 1;
         });
     }
 
-    // Update cart counter
-    function updateCartCounter(cart) {
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        // You can add cart counter element in header later
-        console.log('Cart items:', totalItems);
-    }
-
     // Load Related Products ("You May Also Like")
     function loadRelatedProducts() {
-        const relatedContainer = document.getElementById('related-products');
-        
         // Get 4 random products (excluding current product)
         const otherProducts = allProducts.filter(p => p.id !== currentProduct.id);
         const shuffled = otherProducts.sort(() => 0.5 - Math.random());
         const selectedProducts = shuffled.slice(0, 4);
 
-        relatedContainer.innerHTML = selectedProducts.map(product => `
-            <div class="product-card" onclick="window.location.href='/src/pages/product-details-template.html?id=${product.id}'">
-                ${product.salesStatus ? '<div class="sale-badge">SALE</div>' : ''}
-                <img src="${product.imageUrl}" alt="${product.name}" class="product-image" />
-                <div class="product-card-info">
-                    <h3 class="product-card-name">${product.name}</h3>
-                    <div class="product-card-rating">
-                        ${renderStars(product.rating)}
-                    </div>
-                    <p class="product-card-price">$${product.price}</p>
-                    <button class="btn add-to-cart" onclick="event.stopPropagation();">Add To Cart</button>
-                </div>
-            </div>
-        `).join('');
-
-        // Add event listeners to "Add to Cart" buttons on related products
-        relatedContainer.querySelectorAll('.add-to-cart').forEach((btn, index) => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                const product = selectedProducts[index];
-                addToCartQuick(product);
-            });
-        });
-    }
-
-    // Quick add to cart for related products
-    function addToCartQuick(product) {
-        const cartItem = {
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            imageUrl: product.imageUrl,
-            quantity: 1,
-            size: product.size,
-            color: product.color,
-            category: product.category
-        };
-
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        const existingItemIndex = cart.findIndex(item => 
-            item.id === cartItem.id && 
-            item.size === cartItem.size && 
-            item.color === cartItem.color
+        // Use the same renderSection function as home page for consistent styling
+        renderSection(
+            'related-products',
+            'You May Also Like',
+            null,
+            'Add To Cart',
+            selectedProducts,
+            null
         );
-
-        if (existingItemIndex !== -1) {
-            cart[existingItemIndex].quantity += 1;
-        } else {
-            cart.push(cartItem);
-        }
-
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCounter(cart);
-        alert(`${cartItem.name} added to cart!`);
     }
 
     // Star Rating Input
@@ -400,3 +342,19 @@ import { renderStars } from "./products-section.js";
         setupReviewForm();
     });
 })();
+
+// Export renderStars function if needed
+export function renderStarsForDetails(rating) {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
+
+    return (
+        "★".repeat(fullStars) +
+        (halfStar ? "☆" : "") +
+        "☆".repeat(emptyStars)
+    )
+        .split("")
+        .map((star) => `<span class="star">${star}</span>`)
+        .join("");
+}
