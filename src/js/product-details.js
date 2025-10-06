@@ -105,14 +105,14 @@ import { renderStars, renderSection } from './products-section.js';
     const qtyPlus = document.getElementById('qty-plus');
 
     qtyMinus.addEventListener('click', () => {
-      const currentValue = parseInt(qtyInput.value);
+      const currentValue = Number.parseInt(qtyInput.value, 10);
       if (currentValue > 1) {
         qtyInput.value = currentValue - 1;
       }
     });
 
     qtyPlus.addEventListener('click', () => {
-      const currentValue = parseInt(qtyInput.value);
+      const currentValue = Number.parseInt(qtyInput.value, 10);
       qtyInput.value = currentValue + 1;
     });
   }
@@ -150,7 +150,7 @@ import { renderStars, renderSection } from './products-section.js';
     if (!addToCartBtn) {return;}
 
     addToCartBtn.addEventListener('click', () => {
-      const quantity = parseInt(document.getElementById('quantity').value);
+      const quantity = Number.parseInt(document.getElementById('quantity').value, 10);
 
       if (window.CartHandler) {
         // Add product to cart with quantity
@@ -200,7 +200,7 @@ import { renderStars, renderSection } from './products-section.js';
   }
 
   function handleStarClick(clickedStar, ratingInput) {
-    selectedRating = parseInt(clickedStar.dataset.rating);
+    selectedRating = Number.parseInt(clickedStar.dataset.rating, 10);
     ratingInput.value = selectedRating;
 
     // Update visual state
@@ -208,13 +208,13 @@ import { renderStars, renderSection } from './products-section.js';
   }
 
   function handleStarHover(hoveredStar) {
-    const hoverRating = parseInt(hoveredStar.dataset.rating);
+    const hoverRating = Number.parseInt(hoveredStar.dataset.rating, 10);
     updateStarVisuals(hoverRating);
   }
 
   function updateStarVisuals(targetRating) {
     starInputs.forEach(s => {
-      const rating = parseInt(s.dataset.rating);
+      const rating = Number.parseInt(s.dataset.rating, 10);
       if (rating <= targetRating) {
         s.textContent = '★';
         s.classList.add('active');

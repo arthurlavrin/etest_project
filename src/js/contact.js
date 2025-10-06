@@ -1,4 +1,48 @@
 // Contact Form Validation with Real-time Feedback
+
+// Email validation regex
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Helper functions moved to outer scope for better maintainability
+function showFieldError(field, message) {
+  const formField = field.closest('.form-field');
+  const errorMessage = formField?.querySelector('.error-message');
+
+  field.classList.add('error');
+  field.classList.remove('success');
+
+  if (errorMessage) {
+    errorMessage.textContent = message;
+    errorMessage.style.display = 'block';
+  }
+}
+
+function showFieldSuccess(field) {
+  const formField = field.closest('.form-field');
+  const errorMessage = formField?.querySelector('.error-message');
+
+  field.classList.remove('error');
+  field.classList.add('success');
+
+  if (errorMessage) {
+    errorMessage.textContent = '';
+    errorMessage.style.display = 'none';
+  }
+}
+
+function clearFieldError(field) {
+  const formField = field.closest('.form-field');
+  const errorMessage = formField?.querySelector('.error-message');
+
+  field.classList.remove('error');
+  field.classList.remove('success');
+
+  if (errorMessage) {
+    errorMessage.textContent = '';
+    errorMessage.style.display = 'none';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('feedbackForm');
   const nameField = document.getElementById('name');
@@ -6,9 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const topicField = document.getElementById('topic');
   const messageField = document.getElementById('message');
   const formMessage = document.getElementById('form-message');
-
-  // Email validation regex
-  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   // Setup real-time validation
   setupRealtimeValidation();
@@ -128,45 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showFieldSuccess(field);
     return true;
-  }
-
-  function showFieldError(field, message) {
-    const formField = field.closest('.form-field');
-    const errorMessage = formField?.querySelector('.error-message');
-
-    field.classList.add('error');
-    field.classList.remove('success');
-
-    if (errorMessage) {
-      errorMessage.textContent = message;
-      errorMessage.style.display = 'block';
-    }
-  }
-
-  function showFieldSuccess(field) {
-    const formField = field.closest('.form-field');
-    const errorMessage = formField?.querySelector('.error-message');
-
-    field.classList.remove('error');
-    field.classList.add('success');
-
-    if (errorMessage) {
-      errorMessage.textContent = '';
-      errorMessage.style.display = 'none';
-    }
-  }
-
-  function clearFieldError(field) {
-    const formField = field.closest('.form-field');
-    const errorMessage = formField?.querySelector('.error-message');
-
-    field.classList.remove('error');
-    field.classList.remove('success');
-
-    if (errorMessage) {
-      errorMessage.textContent = '';
-      errorMessage.style.display = 'none';
-    }
   }
 
   function showFormMessage(message, type) {
