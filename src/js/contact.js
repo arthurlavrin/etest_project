@@ -43,6 +43,81 @@ function clearFieldError(field) {
   }
 }
 
+// Validation functions moved to outer scope
+function validateName(field) {
+  const value = field.value.trim();
+
+  if (!value) {
+    showFieldError(field, 'Name is required');
+    return false;
+  }
+
+  if (value.length < 2) {
+    showFieldError(field, 'Name must be at least 2 characters');
+    return false;
+  }
+
+  showFieldSuccess(field);
+  return true;
+}
+
+function validateEmail(field, isRealtime = false) {
+  const value = field.value.trim();
+
+  // Don't show error while typing if field is empty (real-time mode)
+  if (isRealtime && !value) {
+    clearFieldError(field);
+    return false;
+  }
+
+  if (!value) {
+    showFieldError(field, 'Email is required');
+    return false;
+  }
+
+  if (!EMAIL_REGEX.test(value)) {
+    showFieldError(field, 'Please enter a valid email address (e.g., name@example.com)');
+    return false;
+  }
+
+  showFieldSuccess(field);
+  return true;
+}
+
+function validateTopic(field) {
+  const value = field.value.trim();
+
+  if (!value) {
+    showFieldError(field, 'Topic is required');
+    return false;
+  }
+
+  if (value.length < 3) {
+    showFieldError(field, 'Topic must be at least 3 characters');
+    return false;
+  }
+
+  showFieldSuccess(field);
+  return true;
+}
+
+function validateMessage(field) {
+  const value = field.value.trim();
+
+  if (!value) {
+    showFieldError(field, 'Message is required');
+    return false;
+  }
+
+  if (value.length < 10) {
+    showFieldError(field, 'Message must be at least 10 characters');
+    return false;
+  }
+
+  showFieldSuccess(field);
+  return true;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('feedbackForm');
   const nameField = document.getElementById('name');
@@ -95,80 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
         clearFieldError(this);
       }
     });
-  }
-
-  function validateName(field) {
-    const value = field.value.trim();
-
-    if (!value) {
-      showFieldError(field, 'Name is required');
-      return false;
-    }
-
-    if (value.length < 2) {
-      showFieldError(field, 'Name must be at least 2 characters');
-      return false;
-    }
-
-    showFieldSuccess(field);
-    return true;
-  }
-
-  function validateEmail(field, isRealtime = false) {
-    const value = field.value.trim();
-
-    // Don't show error while typing if field is empty (real-time mode)
-    if (isRealtime && !value) {
-      clearFieldError(field);
-      return false;
-    }
-
-    if (!value) {
-      showFieldError(field, 'Email is required');
-      return false;
-    }
-
-    if (!EMAIL_REGEX.test(value)) {
-      showFieldError(field, 'Please enter a valid email address (e.g., name@example.com)');
-      return false;
-    }
-
-    showFieldSuccess(field);
-    return true;
-  }
-
-  function validateTopic(field) {
-    const value = field.value.trim();
-
-    if (!value) {
-      showFieldError(field, 'Topic is required');
-      return false;
-    }
-
-    if (value.length < 3) {
-      showFieldError(field, 'Topic must be at least 3 characters');
-      return false;
-    }
-
-    showFieldSuccess(field);
-    return true;
-  }
-
-  function validateMessage(field) {
-    const value = field.value.trim();
-
-    if (!value) {
-      showFieldError(field, 'Message is required');
-      return false;
-    }
-
-    if (value.length < 10) {
-      showFieldError(field, 'Message must be at least 10 characters');
-      return false;
-    }
-
-    showFieldSuccess(field);
-    return true;
   }
 
   function showFormMessage(message, type) {
