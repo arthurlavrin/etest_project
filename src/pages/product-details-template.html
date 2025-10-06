@@ -35,11 +35,11 @@
 				<div class="product-details-container">
 					<div class="product-gallery">
 						<div class="gallery-main">
-							<img
-								id="main-image"
-								src="/src/assets/images/catalog/image1.png"
-								alt="Product Image"
-							/>
+						<img
+							id="main-image"
+							src="/src/assets/images/catalog/image1.png"
+							alt="Product"
+						/>
 						</div>
 						<div class="gallery-thumbnails">
 							<img
@@ -127,9 +127,9 @@
 						</div>
 
 						<div class="product-options">
-							<div class="option-group">
-								<label class="option-label">Size</label>
-								<select id="size-select" class="option-select">
+						<div class="option-group">
+							<label class="option-label" for="size-select">Size</label>
+							<select id="size-select" class="option-select">
 									<option value="">Choose option</option>
 									<option value="S">S</option>
 									<option value="M">M</option>
@@ -138,9 +138,9 @@
 								</select>
 							</div>
 
-							<div class="option-group">
-								<label class="option-label">Color</label>
-								<select id="color-select" class="option-select">
+						<div class="option-group">
+							<label class="option-label" for="color-select">Color</label>
+							<select id="color-select" class="option-select">
 									<option value="">Choose option</option>
 									<option value="red">Red</option>
 									<option value="blue">Blue</option>
@@ -152,12 +152,12 @@
 								</select>
 							</div>
 
-							<div class="option-group">
-								<label class="option-label">Category</label>
-								<select
-									id="category-select"
-									class="option-select"
-								>
+						<div class="option-group">
+							<label class="option-label" for="category-select">Category</label>
+							<select
+								id="category-select"
+								class="option-select"
+							>
 									<option value="">Choose option</option>
 									<option value="carry-ons">Carry-ons</option>
 									<option value="suitcases">Suitcases</option>
@@ -323,14 +323,14 @@
 									</p>
 
 									<form id="reviewForm">
-										<div class="form-group">
-											<label
-												>RATE PRODUCT
-												<span class="required"
-													>*</span
-												></label
-											>
-											<div class="star-rating-input">
+									<div class="form-group">
+										<label for="rating-input"
+											>RATE PRODUCT
+											<span class="required"
+												>*</span
+											></label
+										>
+										<div class="star-rating-input">
 												<span
 													class="star-input"
 													data-rating="1"

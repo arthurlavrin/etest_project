@@ -12,12 +12,14 @@
 
   function initFilters() {
     // Wait a bit for products-section.js to load
-    setTimeout(() => {
-      setupToggleButton();
-      setupFilterListeners();
-      setupResetButton();
-      setupMobileDropdowns();
-    }, 100);
+    setTimeout(setupAllFilters, 100);
+  }
+
+  function setupAllFilters() {
+    setupToggleButton();
+    setupFilterListeners();
+    setupResetButton();
+    setupMobileDropdowns();
   }
 
   function setupToggleButton() {
@@ -26,19 +28,21 @@
     const resetBtn = document.getElementById('reset-filters-btn');
 
     if (toggleBtn && filtersList) {
-      toggleBtn.addEventListener('click', () => {
-        const isVisible = filtersList.style.display !== 'none';
+      toggleBtn.addEventListener('click', () => handleToggleClick(filtersList, resetBtn, toggleBtn));
+    }
+  }
 
-        if (isVisible) {
-          filtersList.style.display = 'none';
-          resetBtn.style.display = 'none';
-          toggleBtn.classList.remove('active');
-        } else {
-          filtersList.style.display = 'flex';
-          resetBtn.style.display = 'block';
-          toggleBtn.classList.add('active');
-        }
-      });
+  function handleToggleClick(filtersList, resetBtn, toggleBtn) {
+    const isVisible = filtersList.style.display !== 'none';
+
+    if (isVisible) {
+      filtersList.style.display = 'none';
+      resetBtn.style.display = 'none';
+      toggleBtn.classList.remove('active');
+    } else {
+      filtersList.style.display = 'flex';
+      resetBtn.style.display = 'block';
+      toggleBtn.classList.add('active');
     }
   }
 
@@ -63,28 +67,34 @@
     const filterToggles = document.querySelectorAll('.filter-toggle');
 
     filterToggles.forEach(toggle => {
-      toggle.addEventListener('click', function(e) {
-        // Only handle clicks on mobile
-        if (window.innerWidth < 769) {
-          e.stopPropagation();
-          const dropdown = this.nextElementSibling;
-          const isActive = dropdown.classList.contains('active');
+      toggle.addEventListener('click', handleMobileToggleClick);
+    });
+  }
 
-          // Close all dropdowns
-          document.querySelectorAll('.filter-dropdown').forEach(d => {
-            d.classList.remove('active');
-          });
-          document.querySelectorAll('.filter-toggle').forEach(t => {
-            t.classList.remove('active');
-          });
+  function handleMobileToggleClick(e) {
+    // Only handle clicks on mobile
+    if (window.innerWidth < 769) {
+      e.stopPropagation();
+      const dropdown = this.nextElementSibling;
+      const isActive = dropdown.classList.contains('active');
 
-          // Toggle current dropdown
-          if (!isActive) {
-            dropdown.classList.add('active');
-            this.classList.add('active');
-          }
-        }
-      });
+      // Close all dropdowns
+      closeAllDropdowns();
+
+      // Toggle current dropdown
+      if (!isActive) {
+        dropdown.classList.add('active');
+        this.classList.add('active');
+      }
+    }
+  }
+
+  function closeAllDropdowns() {
+    document.querySelectorAll('.filter-dropdown').forEach(d => {
+      d.classList.remove('active');
+    });
+    document.querySelectorAll('.filter-toggle').forEach(t => {
+      t.classList.remove('active');
     });
   }
 
@@ -133,18 +143,26 @@
     };
 
     // Uncheck all checkboxes
+    uncheckAllFilters();
+
+    // Remove active class from all toggles
+    removeActiveFromToggles();
+
+    // Apply filters (will show all products)
+    applyFilters();
+  }
+
+  function uncheckAllFilters() {
     const filterCheckboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
     filterCheckboxes.forEach(checkbox => {
       checkbox.checked = false;
     });
+  }
 
-    // Remove active class from all toggles
+  function removeActiveFromToggles() {
     document.querySelectorAll('.filter-toggle').forEach(toggle => {
       toggle.classList.remove('active');
     });
-
-    // Apply filters (will show all products)
-    applyFilters();
   }
 
   function applyFilters() {

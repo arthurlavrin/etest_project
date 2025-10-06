@@ -3,7 +3,6 @@
 
 .footer {
 	font-family: var(--second-family);
-	// padding: 40px 0;
 }
 
 
@@ -310,18 +309,15 @@ p {
 			}
 		}
 
-		.right-block .info {
+	.right-block {
+		display: block;
+
+		.info {
 			flex-direction: column;
 			gap: 20px;
+			align-content: center;
 		}
-
-		.right-block {
-			display: block;
-
-			.info {
-				align-content: center;
-			}
-		}
+	}
 	}
 }
 

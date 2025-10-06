@@ -1,5 +1,6 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
+@use "sass:color";
 
 // --- hero-contact section ---
 .hero-contact {
@@ -199,9 +200,9 @@
 				outline: none;
 				transition: border-color 0.3s ease;
 
-				&:focus {
-					border-color: darken($color-main, 10%);
-				}
+			&:focus {
+				border-color: color.adjust($color-main, $lightness: -10%);
+			}
 
 				&.error {
 					border-color: #dc3545;

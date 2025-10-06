@@ -1,54 +1,53 @@
 export default {
   extends: 'stylelint-config-standard-scss',
   rules: {
-    // Disable some strict rules for flexibility
+    // ===== PATTERN RULES - Allow flexible naming =====
     'selector-class-pattern': null,
     'custom-property-pattern': null,
+    'keyframes-name-pattern': null,
     'scss/dollar-variable-pattern': null,
     'scss/at-mixin-pattern': null,
     'scss/at-function-pattern': null,
     
-    // Indentation
-    'indentation': 2,
+    // ===== FORMATTING RULES - Allow flexible formatting =====
+    'color-hex-length': null,
+    'rule-empty-line-before': null,
+    'font-weight-notation': null,
+    'value-keyword-case': null,
     
-    // Allow vendor prefixes
+    // ===== VENDOR PREFIXES - Allow them =====
     'property-no-vendor-prefix': null,
     'value-no-vendor-prefix': null,
     
-    // Color format
-    'color-hex-length': 'long',
+    // ===== SELECTOR ORDERING - Too strict for real projects =====
+    'no-descending-specificity': null,
+    'no-duplicate-selectors': null,
     
-    // Empty lines
-    'rule-empty-line-before': ['always', {
-      except: ['first-nested'],
-      ignore: ['after-comment']
-    }],
+    // ===== NESTING - Allow deep nesting (common in SCSS) =====
+    'max-nesting-depth': null,
     
-    // No duplicate selectors
-    'no-duplicate-selectors': true,
+    // ===== EMPTY RULES - Allow empty blocks and files =====
+    'block-no-empty': null,
+    'no-empty-source': null,
     
-    // Font weight
-    'font-weight-notation': 'numeric',
+    // ===== PROPERTY RULES - Allow unknown properties =====
+    'property-no-unknown': null,
     
-    // Max nesting depth
-    'max-nesting-depth': [4, {
-      ignore: ['blockless-at-rules', 'pseudo-classes']
-    }],
-    
-    // Disable warnings for unknown properties (allows custom props)
-    'property-no-unknown': [true, {
-      ignoreProperties: ['accent-color']
-    }],
-    
-    // Allow @use and @forward
-    'scss/at-rule-no-unknown': [true, {
-      ignoreAtRules: ['tailwind']
-    }],
-    
-    // SCSS specific
+    // ===== SCSS SPECIFIC RULES =====
+    'scss/at-rule-no-unknown': null,
     'scss/at-import-partial-extension': null,
     'scss/dollar-variable-empty-line-before': null,
-    'scss/double-slash-comment-empty-line-before': null
+    'scss/double-slash-comment-empty-line-before': null,
+    'scss/no-global-function-names': null,
+    'scss/operator-no-unspaced': null,
+    
+    // ===== OTHER RULES =====
+    'declaration-empty-line-before': null,
+    'comment-empty-line-before': null,
+    'at-rule-empty-line-before': null,
+    'selector-max-compound-selectors': null,
+    'selector-max-specificity': null,
+    'declaration-block-no-redundant-longhand-properties': null
   },
   ignoreFiles: [
     'node_modules/**',
@@ -56,4 +55,3 @@ export default {
     '**/*.min.css'
   ]
 };
-

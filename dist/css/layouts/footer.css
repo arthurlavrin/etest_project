@@ -269,14 +269,12 @@
   .blocks .left-block .links h3 {
     text-align: start;
   }
-  .blocks .right-block .info {
-    flex-direction: column;
-    gap: 20px;
-  }
   .blocks .right-block {
     display: block;
   }
   .blocks .right-block .info {
+    flex-direction: column;
+    gap: 20px;
     align-content: center;
   }
 }
